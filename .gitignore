@@ -126,24 +126,9 @@ venv.bak/
 dmypy.json
 
 # Pyre type checker
-.pyre/
-3d_3d/
-4d_4d/
-5d_5d/
-Data_analysis/
-plots
 *.zip
 **/.*icloud
 .DS_Store
 **/.DS_Store
-3d
-4d
-3d_4d
-deprecated_data/
-Raw_data
-*d_*d
-*.svg
-*.csv
-*.png
-*.ai
 *.ipynb
+GDY_SAC_models
