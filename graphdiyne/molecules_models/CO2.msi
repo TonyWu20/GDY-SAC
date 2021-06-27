@@ -1,0 +1,35 @@
+# MSI CERIUS2 DataModel File Version 4 0
+(1 Model
+  (A I CRY/DISPLAY (192 256))
+  (A I PeriodicType 100)
+  (A C SpaceGroup "1 1")
+  (A D A3 (10 0 0))
+  (A D B3 (0 10 0))
+  (A D C3 (0 0 10))
+  (A D CRY/TOLERANCE 0.05)
+  (2 Atom
+    (A C ACL "6 C")
+    (A D XYZ (4.625639166903 5.160046078134 14.28545430449))
+    (A I Id 25)
+  )
+  (3 Atom
+    (A C ACL "8 O")
+    (A D XYZ (4.625639166903 6.371242190905 14.90625047263))
+    (A I Id 26)
+  )
+  (4 Atom
+    (A C ACL "8 O")
+    (A D XYZ (4.625639166903 3.948849965363 14.90625047263))
+    (A I Id 27)
+  )
+  (5 Bond
+    (A O Atom1 3)
+    (A O Atom2 2)
+    (A I Type 2)
+  )
+  (6 Bond
+    (A O Atom1 4)
+    (A O Atom2 2)
+    (A I Type 2)
+  )
+)

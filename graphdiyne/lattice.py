@@ -5,6 +5,7 @@ from typing import Tuple
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
+import sympy as sp
 
 
 class GDYLattice:

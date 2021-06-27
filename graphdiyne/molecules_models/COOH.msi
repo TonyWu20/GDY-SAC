@@ -1,0 +1,36 @@
+# MSI CERIUS2 DataModel File Version 4 0
+(1 Model
+  (2 Atom
+    (A C ACL "6 C")
+    (A D XYZ (2.774616298698 22.54108936875 13.11753803968))
+    (A I Id 49)
+  )
+  (3 Atom
+    (A C ACL "8 O")
+    (A D XYZ (2.774616298698 23.58018850647 13.7368038634))
+    (A I Id 50)
+  )
+  (4 Atom
+    (A C ACL "8 O")
+    (A D XYZ (2.774616298698 21.33297714294 13.7368038634))
+    (A I Id 51)
+  )
+  (5 Atom
+    (A C ACL "0 H")
+    (A D XYZ (2.774616298698 20.61328524158 13.07107664391))
+    (A I Id 52)
+  )
+  (6 Bond
+    (A O Atom1 3)
+    (A O Atom2 2)
+    (A I Type 2)
+  )
+  (7 Bond
+    (A O Atom1 4)
+    (A O Atom2 2)
+  )
+  (8 Bond
+    (A O Atom1 5)
+    (A O Atom2 4)
+  )
+)
