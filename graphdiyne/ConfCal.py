@@ -70,11 +70,10 @@ class ModelFactory:
         a, b, c = lattice.lat_param  #pylint: disable=invalid-name
         metal_x, metal_y, metal_z = lattice.metal_xyz
         scale = np.array([a, b, c])
-        push_height = np.array([0, 0, mol_height]) / scale
-        top_height = np.array([0, 0, metal_z])
-        mole_coord = self.mol.coordinates / scale
-        implanted_coord = mole_coord + push_height + np.array(
-            [metal_x, metal_y, 0])
+        push_height = np.array([0, 0, mol_height])
+        mole_coord = np.dot(self.mol.coordinates, lattice.rotation_vector)
+        implanted_coord = (mole_coord + push_height) / scale + np.array(
+            [metal_x, metal_y, metal_z])
         output = np.round(implanted_coord.astype(np.float64), 6)
         return output
 
