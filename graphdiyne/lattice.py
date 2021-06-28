@@ -100,7 +100,7 @@ class GDYLattice:
         """
         Determine x or y to align with when putting molecules
         """
-        theta = round(np.degrees(self.lattice_angle[2]))
+        theta = 30
         cos, sin = sp.cos(theta), sp.sin(theta)
         rot_matrix = np.array([[cos, -sin, 0], [sin, cos, 0], [0, 0, 1]])
         return rot_matrix
