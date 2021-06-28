@@ -5,7 +5,6 @@ from typing import Tuple
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
-import sympy as sp
 
 
 class GDYLattice:
@@ -18,37 +17,9 @@ class GDYLattice:
         self.metal = filepath.stem.split("_")[-1]
 
     @property
-    def lat_param(self) -> Tuple[np.float64]:
+    def lat_vectors(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
-        lattice parameter in xsd file
-        """
-        lat_info = self.tree.find('.//SpaceGroup')
-        str_a, str_b, str_c = (
-            lat_info.get(key)  #type:ignore
-            for key in ['AVector', 'BVector', 'CVector'])
-
-        def str_to_array(vec_str: str) -> np.ndarray:
-            """
-            convert the vector string to array
-            Args:
-                vec_str: string of vector
-            returns:
-                arr : vector in array form
-            """
-            values = vec_str.split(',')
-            arr = np.array([float(item) for item in values])
-            return arr
-
-        vectors = (
-            str_to_array(item)  #type:ignore
-            for item in [str_a, str_b, str_c])
-        lat_params = tuple(np.linalg.norm(vec) for vec in vectors)
-        return lat_params  #type: ignore
-
-    @property
-    def lattice_angle(self) -> tuple:
-        """
-        Determine lattice angle: alpha, beta, gamma
+        lattice vectors in xsd file
         """
         lat_info = self.tree.find('.//SpaceGroup')
         str_a, str_b, str_c = (
@@ -70,6 +41,23 @@ class GDYLattice:
         vec_a, vec_b, vec_c = (
             str_to_array(item)  #type:ignore
             for item in [str_a, str_b, str_c])
+        return (vec_a, vec_b, vec_c)
+
+    @property
+    def lat_params(self) -> Tuple[np.float64]:
+        """
+        Get lattice params
+        """
+        vectors = self.lat_vectors
+        lat_params = tuple(np.linalg.norm(vec) for vec in vectors)
+        return lat_params  #type: ignore
+
+    @property
+    def lattice_angle(self) -> tuple:
+        """
+        Determine lattice angle: alpha, beta, gamma
+        """
+        vec_a, vec_b, vec_c = self.lat_vectors
         alpha = np.arccos(
             np.clip(
                 np.dot(vec_b / np.linalg.norm(vec_b),
@@ -100,7 +88,24 @@ class GDYLattice:
         """
         Determine x or y to align with when putting molecules
         """
-        theta = 30
-        cos, sin = sp.cos(theta), sp.sin(theta)
+        theta = np.pi / 3
+        cos, sin = np.cos(theta), np.sin(theta)
         rot_matrix = np.array([[cos, -sin, 0], [sin, cos, 0], [0, 0, 1]])
         return rot_matrix
+
+    def convert_xyz(self, mol_coordinates: np.ndarray):
+        """
+        Convert external molecule real xyz coordinates into fractional xyz
+        Args:
+            mol_coordinates: array of xyz coordinates
+        """
+        vec_a, vec_b, vec_c = self.lat_vectors
+
+        def convert(point: np.ndarray):
+            x = point[0] / vec_a[0]
+            y = np.linalg.norm(point) / vec_a[0]
+            z = point[2] / np.linalg.norm(vec_c)
+            return x, y, z
+
+        new_coordinates = np.apply_along_axis(convert, 1, mol_coordinates)
+        return new_coordinates

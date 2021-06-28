@@ -67,14 +67,14 @@ class ModelFactory:
             output (np.ndarray): arrays of the molecule atoms coordinates
         """
         lattice = GDYLattice(use_lattice)
-        a, b, c = lattice.lat_param  #pylint: disable=invalid-name
         metal_x, metal_y, metal_z = lattice.metal_xyz
-        scale = np.array([a, b, c])
         push_height = np.array([0, 0, mol_height])
-        mole_coord = np.dot(self.mol.coordinates, lattice.rotation_vector)
-        implanted_coord = (mole_coord + push_height) / scale + np.array(
+        mole_coord = np.dot(self.mol.coordinates + push_height,
+                            lattice.rotation_vector)
+        converted_coord = lattice.convert_xyz(mole_coord)
+        implanted_coord = converted_coord + np.array(
             [metal_x, metal_y, metal_z])
-        output = np.round(implanted_coord.astype(np.float64), 6)
+        output: np.ndarray = np.round(implanted_coord.astype(np.float64), 6)
         return output
 
     def adsorbate_setup(self, use_lattice: Path, mol_height: float = 1.7):
