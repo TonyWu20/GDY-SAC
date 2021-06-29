@@ -67,13 +67,11 @@ class ModelFactory:
             output (np.ndarray): arrays of the molecule atoms coordinates
         """
         lattice = GDYLattice(use_lattice)
-        metal_x, metal_y, metal_z = lattice.metal_xyz
         push_height = np.array([0, 0, mol_height])
         mole_coord = np.dot(self.mol.coordinates + push_height,
                             lattice.rotation_vector)
         converted_coord = lattice.convert_xyz(mole_coord)
-        implanted_coord = converted_coord + np.array(
-            [metal_x, metal_y, metal_z])
+        implanted_coord = converted_coord + lattice.metal_xyz
         output: np.ndarray = np.round(implanted_coord.astype(np.float64), 6)
         return output
 

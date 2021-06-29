@@ -99,13 +99,12 @@ class GDYLattice:
         Args:
             mol_coordinates: array of xyz coordinates
         """
+        a, b, c = self.lat_params
         vec_a, vec_b, vec_c = self.lat_vectors
-
-        def convert(point: np.ndarray):
-            x = point[0] / vec_a[0]
-            y = np.linalg.norm(point) / vec_a[0]
-            z = point[2] / np.linalg.norm(vec_c)
-            return x, y, z
-
-        new_coordinates = np.apply_along_axis(convert, 1, mol_coordinates)
+        V = np.dot(vec_a, np.cross(vec_b, vec_c))
+        cos_y = np.cos(np.pi * 2 / 3)
+        sin_y = np.sin(np.pi * 2 / 3)
+        M = np.array([[-1 * cos_y / (a * sin_y), 1 / a, 0],
+                      [1 / (b * sin_y), 0, 0], [0, 0, a * b * sin_y / V]])
+        new_coordinates = np.dot(mol_coordinates, M)
         return new_coordinates
