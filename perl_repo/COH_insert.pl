@@ -18,7 +18,7 @@ foreach my $item (@params) {
     my $H = $doc->CreateAtom( "H",
         $doc->FromFractionalPosition( Point( X => $H_x, Y => $H_y, Z => $H_z ) ) );
     $doc->CalculateBonds;
-    $doc->Export("Au_s0_COH/${output}_COH.msi");
+    $doc->Export("${output}_COH.msi");
     $doc->Discard;
     $doc->Close;
 }

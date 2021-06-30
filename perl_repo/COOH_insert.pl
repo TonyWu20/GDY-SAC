@@ -22,7 +22,7 @@ foreach my $item (@params) {
         $doc->FromFractionalPosition( Point( X => $O2_x, Y => $O2_y, Z => $O2_z ) ) );
     my $H = $doc->CreateAtom( "H", $doc->FromFractionalPosition( Point( X => $H_x, Y=> $H_y, Z => $H_z ) ) );
     $doc->CalculateBonds;
-    $doc->Export("Au_s0_COOH/${output}_COOH.msi");
+    $doc->Export("${output}_COOH.msi");
     $doc->Discard;
     $doc->Close;
 }

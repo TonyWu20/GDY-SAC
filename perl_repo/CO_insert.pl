@@ -13,7 +13,7 @@ foreach my $item (@params) {
     my $O = $doc->CreateAtom( "O",
         $doc->FromFractionalPosition( Point( X => $O_x, Y => $O_y, Z => $O_z ) ) );
     $doc->CalculateBonds;
-    my $newDoc = $doc->Export("Au_s0_CO/${output}_CO.msi");
+    my $newDoc = $doc->Export("${output}_CO.msi");
     $doc->Discard;
     $doc->Close;
 }
