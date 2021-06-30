@@ -83,7 +83,7 @@ class ModelFactory:
         ad_coord = self.feed_lattice(use_lattice)
         flat_coord = ad_coord.flatten()
         parent_dirs = use_lattice.parents
-        lattice_str = f"../'{parent_dirs[1].name}/{parent_dirs[0].name}/{use_lattice.name}', "
+        lattice_str = f"'../{parent_dirs[1].name}/{parent_dirs[0].name}/{use_lattice.name}', "
         coord_strings = ", ".join([str(i) for i in flat_coord])
         line = f"\t[{lattice_str} {coord_strings}, '{use_lattice.stem}'],\n"
         return line
