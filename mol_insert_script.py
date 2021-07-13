@@ -27,23 +27,24 @@ class Scriptor(conf.ModelFactory):
         with open(f"perl_repo/{adsorbate}_insert.pl", 'r') as file:
             operations = file.readlines()
         text = headlines + array_lines + operations
-        with open(outdir / f"{outdir}_insertion.pl", 'w') as output:
+        with open(f"{outdir}/generate_model.pl", 'w') as output:
             output.writelines(text)
 
-    def output_by_dir(self, lat_dir: Path):
+    def generate_scripts(self, lat_dir: Path, site: str):
         """
         Output scripts by directory
         """
-        outdir = Path(lat_dir.name + f"_{self.mol.filepath.stem}")
+        outdir = Path(lat_dir.name + f"_{self.mol.filepath.stem}/{site}")
         if not outdir.exists():
             outdir.mkdir(parents=True)
         files = [item for item in lat_dir.iterdir() if 'xsd' in item.name]
         files.sort()
-        res = p_map(self.adsorbate_setup, files)
+        setup = partial(self.adsorbate_setup, site=site)
+        res = p_map(setup, files)
         self.write_perl(res, outdir)
 
 
-def main(use_mol: str, mol_z: float, lat_dir: str):
+def main(use_mol: str, lat_dir: str, mol_z: float = 1.54221):
     """
     Main program to execute
     Args:
@@ -53,9 +54,11 @@ def main(use_mol: str, mol_z: float, lat_dir: str):
     root = Path.cwd()
     mol_file = Path(f"graphdiyne/molecules_models/{use_mol}.msi")
     dirs = [item for item in root.rglob(lat_dir) if item.is_dir()]
+    sites = ['metal', 'c1', 'c2', 'c3', 'c4', 'c5']
     scriptor = Scriptor(mol_file, mol_z)
     for dir_path in dirs:
-        scriptor.output_by_dir(dir_path)
+        for site in sites:
+            scriptor.generate_scripts(dir_path, site)
     print("Done")
 
 

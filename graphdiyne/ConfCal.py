@@ -58,7 +58,7 @@ class ModelFactory:
         self.mol = Molecule(use_mol)
         self.mol_height = mol_height
 
-    def feed_lattice(self, use_lattice: Path) -> np.ndarray:
+    def feed_lattice(self, use_lattice: Path, site: str) -> np.ndarray:
         """
         Place the target molecule to input lattices
         Args:
@@ -68,22 +68,30 @@ class ModelFactory:
             output (np.ndarray): arrays of the molecule atoms coordinates
         """
         lattice = GDYLattice(use_lattice)
+        ads_pos = {
+            "metal": lattice.metal_xyz,
+            "c1": lattice.carbon_coords["c1"],
+            "c2": lattice.carbon_coords["c2"],
+            "c3": lattice.carbon_coords["c3"],
+            "c4": lattice.carbon_coords["c4"],
+            "c5": lattice.carbon_coords["c5"]
+        }
         push_height = np.array([0, 0, self.mol_height])
         mole_coord = np.dot(self.mol.coordinates + push_height,
                             lattice.rotation_vector)
         converted_coord = lattice.convert_xyz(mole_coord)
-        implanted_coord = converted_coord + lattice.metal_xyz
+        implanted_coord = converted_coord + ads_pos[site]
         output: np.ndarray = np.round(implanted_coord.astype(np.float64), 6)
         return output
 
-    def adsorbate_setup(self, use_lattice: Path):
+    def adsorbate_setup(self, use_lattice: Path, site: str = "Metal"):
         """
         Format the adsorbate coordinates into MS perl script lines
         """
-        ad_coord = self.feed_lattice(use_lattice)
+        ad_coord = self.feed_lattice(use_lattice, site)
         flat_coord = ad_coord.flatten()
         parent_dirs = use_lattice.parents
-        lattice_str = f"'../{parent_dirs[1].name}/{parent_dirs[0].name}/{use_lattice.name}', "
+        lattice_str = f"'../../{parent_dirs[1].name}/{parent_dirs[0].name}/{use_lattice.name}', "
         coord_strings = ", ".join([str(i) for i in flat_coord])
         line = f"\t[{lattice_str} {coord_strings}, '{use_lattice.stem}'],\n"
         return line

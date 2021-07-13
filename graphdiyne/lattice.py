@@ -1,7 +1,7 @@
 """
 Python scripts to parse GDY SAC lattice model in xsd format
 """
-from typing import Tuple
+from typing import Tuple, Dict
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
@@ -82,6 +82,28 @@ class GDYLattice:
         xyz_array = np.array([float(item)
                               for item in xyz_str.split(',')])  #type: ignore
         return xyz_array
+
+    @property
+    def carbon_coords(self) -> Dict[str, np.ndarray]:
+        """
+        Fractional coordinates of the five carbon sites
+        """
+        carbon_id = [44, 45, 57, 56, 43]
+        names = ["c1", "c2", "c3", "c4", "c5"]
+
+        def carbon_xyz(cid: int):
+            atom = self.tree.find(f".//Atom3d[@ID='{cid}']")
+            xyz_str = atom.get("XYZ")  #type: ignore
+            xyz_array = np.array([
+                float(item) for item in xyz_str.split(",")  #type: ignore
+            ])
+            return xyz_array
+
+        carbon_coords = {
+            key: carbon_xyz(cid)
+            for key, cid in zip(names, carbon_id)
+        }
+        return carbon_coords
 
     @property
     def rotation_vector(self):
