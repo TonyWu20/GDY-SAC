@@ -13,9 +13,9 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
 - [x] COOH
 - [x] CO
 - [x] CHO
-- [ ] CH2O
+- [x] CH2O
 - [x] CH3O
-- [ ] CH3OH
+- [x] CH3OH
 
 ### Path (ii)
 
@@ -26,7 +26,7 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
 
 - [x] COH
 - [x] CHOH
-- [ ] CH2OH
+- [x] CH2OH
 - [ ] C
 - [ ] CH
 - [ ] CH2
