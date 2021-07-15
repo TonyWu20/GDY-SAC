@@ -27,14 +27,14 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
 - [x] COH
 - [x] CHOH
 - [x] CH2OH
-- [ ] C
-- [ ] CH
-- [ ] CH2
-- [ ] CH3
-- [ ] CH4
+- [x] C
+- [x] CH
+- [x] CH2
+- [x] CH3
+- [x] CH4
 
 ### HER
 
-- [ ] O
-- [ ] OH
-- [ ] H2O
+- [x] O
+- [x] OH
+- [x] H2O
