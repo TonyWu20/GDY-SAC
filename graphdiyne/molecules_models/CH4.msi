@@ -1,0 +1,52 @@
+# MSI CERIUS2 DataModel File Version 4 0
+(1 Model
+  (A C Label "Sketch_8")
+  (A I CRY/DISPLAY (192 256))
+  (A I PeriodicType 100)
+  (A C SpaceGroup "1 1")
+  (A D A3 (10 0 0))
+  (A D B3 (0 10 0))
+  (A D C3 (0 0 10))
+  (A D CRY/TOLERANCE 0.05)
+  (2 Atom
+    (A C ACL "0 H")
+    (A D XYZ (5.317893638394 6.138112069046 4.678348808669))
+    (A I Id 1)
+  )
+  (3 Atom
+    (A C ACL "6 C")
+    (A D XYZ (5.326643928396 5.244160659687 4.999709741493))
+    (A I Id 2)
+  )
+  (4 Atom
+    (A C ACL "0 H")
+    (A D XYZ (5.346196193935 5.249264218105 5.949498209666))
+    (A I Id 3)
+  )
+  (7 Bond
+    (A O Atom1 3)
+    (A O Atom2 4)
+  )
+  (5 Atom
+    (A C ACL "0 H")
+    (A D XYZ (4.545734077058 4.792784557382 4.701475291225))
+    (A I Id 4)
+  )
+  (8 Bond
+    (A O Atom1 3)
+    (A O Atom2 5)
+  )
+  (6 Atom
+    (A C ACL "0 H")
+    (A D XYZ (6.096745781002 4.796477973133 4.669524798161))
+    (A I Id 5)
+  )
+  (9 Bond
+    (A O Atom1 3)
+    (A O Atom2 6)
+  )
+  (10 Bond
+    (A O Atom1 2)
+    (A O Atom2 3)
+  )
+)
