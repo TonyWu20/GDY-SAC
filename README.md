@@ -38,3 +38,18 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
 - [x] O
 - [x] OH
 - [x] H2O
+
+## Bug log
+
+### 2021/07/17
+
+Wrong atom order in msi files, causing undesired adsorption contact position of the molecules.
+
+Checked fine: HCOOH, HCOO
+
+Fix:
+
+- [ ] CH2
+- [ ] CH3
+- [ ] CH4
+- [ ] CH3OH

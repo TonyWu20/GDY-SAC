@@ -1,11 +1,11 @@
 foreach my $item (@params) {
     my $source = $item->[0];
-    my $O_x    = $item->[1];
-    my $O_y    = $item->[2];
-    my $O_z    = $item->[3];
-    my $C_x    = $item->[4];
-    my $C_y    = $item->[5];
-    my $C_z    = $item->[6];
+    my $C_x    = $item->[1];
+    my $C_y    = $item->[2];
+    my $C_z    = $item->[3];
+    my $O_x    = $item->[4];
+    my $O_y    = $item->[5];
+    my $O_z    = $item->[6];
     my $H1_x   = $item->[7];
     my $H1_y   = $item->[8];
     my $H1_z   = $item->[9];
