@@ -1,0 +1,62 @@
+CHARGE = 14                 number of valence electrons
+COARSE = 11.0               coarse energy cutoff (Ha)
+MEDIUM = 12.0               medium energy cutoff (Ha)
+FINE = 14.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut           E0                 delta E0        a              delta a %
+    Cr 
+300	-2.36665685E+003	0.87987000	2.90240832	1.99398605
+400	-2.36750829E+003	0.02843000	2.84813077	0.08661009
+500	-2.36753518E+003	0.00154000	2.84566113	-1.756886e-004
+600	-2.36753575E+003	9.700000e-004	2.84564537	-7.296748e-004
+700	-2.36753598E+003	7.400000e-004	2.84565934	-2.387411e-004
+800	-2.36753638E+003	3.400000e-004	2.84565466	-4.032542e-004
+900	-2.36753671E+003	1.000000e-005	2.84566694	2.836692e-005
+1000	-2.36753672E+003			2.84566613	
+exp                                             2.871    
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine (non-magnetic)
+        a        a exp    delta a %     c    c exp   delta c %    b     b exp    delta b %
+Cr3Si 4.462     4.555      -2.0
+CrSi2 4.366     4.43       -1.4       6.314  6.36     -0.7
+Cr    2.813     2.871      -2.0
+Cr    2.837     2.871      -1.2  (antiferromagnetic)
+CrN   4.001     4.148      -3.5       
+CrB   2.892     2.969      -2.6       2.892  2.932    -1.4      7.770   7.858     -1.1
+Cr2B  5.083     5.185      -2.0       4.232  4.316    -1.9
+
+END_COMMENT
+

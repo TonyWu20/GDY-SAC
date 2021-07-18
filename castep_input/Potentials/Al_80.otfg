@@ -1,0 +1,51 @@
+CHARGE = 3                  number of valence electrons
+COARSE = 3.5                coarse energy cutoff (Ha)
+MEDIUM = 5.0                medium energy cutoff (Ha)
+FINE =   7.0                fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid: 7x7x7, Grid: Fine, xc-functional: PBE
+
+Ecut    	E0          	delta E0    		a   	delta a %
+Al
+100	-1.10652713E+002	0.23124300	2.88494743	0.96304106
+200	-1.10874295E+002	0.00966100	2.85930545	0.06566167
+300	-1.10883482E+002	4.740000e-004	2.85767210	0.00850026
+400	-1.10883808E+002	1.480000e-004	2.85750946	0.00280834
+500	-1.10883861E+002	9.500000e-005	2.85747396	0.00156604
+600	-1.10883909E+002	4.700000e-005	2.85745933	0.00105405
+700	-1.10883946E+002	1.000000e-005	2.85743608	2.402990e-004
+800	-1.10883956E+002	0		2.85742921	0
+exp                             		2.843
+        
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a      a exp    delta a %     c    c exp   delta c %
+Al    4.016    4.020     -0.1
+AlAs  5.673    5.662      0.2  
+AlP   5.468    5.451      0.3
+AlSb  6.155    6.135      0.3
+Ni3Al 3.519    3.572     -1.5
+IrAl3 4.268    4.246      0.5      7.731   7.756    -0.3
+AlN   3.114    3.111      0.1      4.984   4.978     0.1
+
+END_COMMENT

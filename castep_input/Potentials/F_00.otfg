@@ -1,0 +1,109 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 16.537             coarse energy cutoff (Ha)
+MEDIUM = 18.375             medium energy cutoff (Ha)
+FINE = 20.212               fine energy cutoff (Ha)
+COMPATIBILITY = 'compat7'   use castep 7.0 otfg generator 
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.4           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %    b    b exp   delta b %
+MgF2  4.629     4.623       0.1      3.054   3.052      0.1
+KMgF3 3.982     3.978       0.1
+NaF   4.636     4.579       1.2
+KF    5.292     5.347      -1.0
+CaF2  5.424     5.463      -0.7
+RbF   5.602     5.64       -0.7
+LiF   4.003     3.964       1.0
+YF3   6.350     6.353       0.0      4.373   4.393     -0.5      6.836   6.850   -0.2
+SrF2  5.759     5.7996     -0.7
+SrFCl 4.083     4.126      -1.0      6.914   6.958     -0.6
+SrFBr 4.175     4.218      -1.0      7.300   7.337     -0.5
+BaFBr 4.477     4.508      -0.7      7.422   7.441     -0.3
+BaFCl 4.367     4.394      -0.6      7.199   7.225     -0.4
+BaFI  4.611     4.654      -0.9      7.908   7.962     -0.7
+KrF2  1.898     1.89        0.4 (bond length)
+XeF2  2.023     1.983       2.0 (bond length)
+CdF2  5.409     5.381       0.5
+CsF   5.983     5.975       0.1
+BaF2  6.177     6.1964     -0.3
+PbF2  5.895     5.943      -0.8
+BiOF  3.765     3.748       0.5      6.182   6.224     -0.7
+
+HArF    H-Ar   H-Ar exp delta %   F-Ar F-Ar exp    delta %
+        1.374   1.33     3.3     1.961   1.97        -0.5
+
+        a           a exp       delta a %   
+LiF     2.929725    2.841155    3.117   
+
+Ecut        a       delta a %   c   delta c %   
+    NiF2                    
+610     4.682418    0.777   3.133216    1.791   
+exp     4.6463              3.0781      
+            
+Ecut        a       delta a %
+    BaF2        
+610     4.443835    1.527
+exp     4.376991    
+
+Ecut        a       delta a %
+    CdF2        
+610     3.890507    2.116
+exp     3.809891
+
+Ecut        a       delta a %   c   delta c %
+    BiOF                
+610     3.824772    2.078   6.266134    0.645
+exp     3.7469              6.226
+
+Ecut        a       delta a %
+    KrF2        
+610     1.92056     1.617
+exp     1.89
+
+Ecut        H-Ar    delta % Ar-F    delta %
+    HArF                
+610     1.37475 3.365   1.98954 0.992
+exp     1.33            1.97
+
+Ecut    Xe-F    delta %
+    XeF2 mol        
+610     2.04117 2.933
+exp     1.983
+
+Ecut        a       delta a %
+    CsF     
+610     4.342119    2.174
+exp     4.249712    
+
+Ecut        a       delta a %
+    KF      
+610     3.821938    1.408
+exp     3.768879
+
+Lattice parameters test of crystalline AcF3 (PBESOL)
+===========================================================
+| AcF3  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   4.234  (-0.8%)  |   diverges        |  4.270  |
+|   c   |   7.494  (-0.5%)  |   diverges        |  7.530  |
+===========================================================
+
+END_COMMENT
+

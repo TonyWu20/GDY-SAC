@@ -1,0 +1,43 @@
+CHARGE = 14                 number of valence electrons
+COARSE = 9.2                coarse energy cutoff (Ha)
+MEDIUM = 12.9               medium energy cutoff (Ha)
+FINE = 16.5                 fine energy cutoff (Ha)
+COMPATIBILITY = 'compat7'   use castep 7.0 otfg generator 
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.4           core radius (a.u.)
+BETA_RADIUS = 2.35          beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %  
+Pb     4.925     4.925       0.0     
+PbF2   5.895     5.943      -0.8    
+PbS    5.894     5.9143     -0.3    
+PbSe   6.093     6.1054     -0.2    
+PbTe   6.437     6.4384      0.0  
+
+
+Ecut        a       delta a %
+    PbSe        
+450     4.390545    1.325
+exp     4.33315 
+
+END_COMMENT
+

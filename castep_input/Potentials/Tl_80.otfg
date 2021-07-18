@@ -1,0 +1,61 @@
+CHARGE = 21                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 11.5               medium energy cutoff (Ha)
+FINE = 12.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0
+    Tl  
+250	-4.81138881E+003	1.47087000	5.18026329	30.70211973
+300	-4.81281140E+003	0.04828000	4.01349424	1.26361826
+350	-4.81285680E+003	0.00288000	3.96775729	0.10963915
+400	-4.81285737E+003	0.00231000	3.96439697	0.02485572
+450	-4.81285809E+003	0.00159000	3.96368720	0.00694754
+500	-4.81285824E+003	0.00144000	3.96368833	0.00697602
+550	-4.81285862E+003	0.00106000	3.96361457	0.00511496
+600	-4.81285914E+003	5.400000e-004	3.96379380	0.00963707
+650	-4.81285940E+003	2.800000e-004	3.96361377	0.00509488
+700	-4.81285944E+003	2.400000e-004	3.96364242	0.00581781
+750	-4.81285951E+003	1.700000e-004	3.96336169	-0.00126524
+800	-4.81285968E+003			3.96341184	
+
+Structure validation
+====================
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %   
+MgTl  3.627      3.628      0.0
+NaTl  7.510      7.483      0.3
+TlBr  3.911      3.97      -1.5
+TlCl  3.766      3.834     -1.8
+
+END_COMMENT
+

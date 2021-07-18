@@ -1,0 +1,53 @@
+CHARGE = 16                 number of valence electrons
+COARSE = 8.1                coarse energy cutoff (Ha)
+MEDIUM = 10.0               medium energy cutoff (Ha)
+FINE = 11.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: sc Po
+Ecut       Energy               Energy Diff             a            % a   
+200	-2.43134033E+003	6.63683000	4.66794301	39.58202338
+250	-2.43746934E+003	0.50782000	3.46008321	3.46429123
+300	-2.43795078E+003	0.02638000	3.35673387	0.37391292
+350	-2.43797576E+003	0.00140000	3.34489105	0.01978597
+400	-2.43797614E+003	0.00102000	3.34499999	0.02304349
+450	-2.43797645E+003	7.100000e-004	3.34455535	0.00974767
+500	-2.43797652E+003	6.400000e-004	3.34412762	-0.00304226
+550	-2.43797674E+003	4.200000e-004	3.34414383	-0.00255763
+600	-2.43797695E+003	2.100000e-004	3.34414720	-0.00245693
+650	-2.43797700E+003	1.600000e-004	3.34424608	4.999458e-004
+700	-2.43797702E+003	1.400000e-004	3.34422697	-7.147305e-005
+750	-2.43797710E+003	6.000000e-005	3.34422865	-2.128114e-005
+800	-2.43797716E+003			3.34422936	
+Exp                                             3.345
+                                
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a       a exp    delta a %     c    c exp   delta c %  
+YPo   6.249     6.251        0.0
+Po    3.291     3.345       -1.6
+
+
+END_COMMENT
+

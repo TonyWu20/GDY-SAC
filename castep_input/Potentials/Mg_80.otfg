@@ -1,0 +1,65 @@
+CHARGE = 10                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 14.0               medium energy cutoff (Ha)
+FINE =   18.0               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Mg crystal, PBE
+
+Ecut	     Energy	       Energy Diff	     a	          c	          % a	          % c
+300	-3.38055581E+003	0.04274000	3.23949536	1.03539219	5.19967239	0.98699393
+400	-3.38062997E+003	0.00566000	3.20702602	0.02271835	5.15006417	0.02351308
+500	-3.38063469E+003	0.00330000	3.20589649	-0.01251038	5.14992707	0.02085034
+600	-3.38063528E+003	0.00301000	3.20527436	-0.03191367	5.14654404	-0.04485420
+700	-3.38063702E+003	0.00214000	3.20472954	-0.04890591	5.14663989	-0.04299262
+800	-3.38063770E+003	0.00180000	3.20569264	-0.01886797	5.14914091	0.00558183
+900	-3.38063797E+003	0.00166000	3.20592435	-0.01164120	5.14891929	0.00127743
+1000	-3.38063850E+003	0.00140000	3.20582509	-0.01473727	5.14956267	0.01377316
+1100	-3.38063876E+003	0.00127000	3.20622237	-0.00234649	5.14878253	-0.00137862
+1200	-3.38063890E+003	0.00120000	3.20584926	-0.01398317	5.14896931	0.00224890
+1300	-3.38063950E+003	9.000000e-004	3.20625558	-0.00131063	5.14861149	-0.00470064
+1400	-3.38064049E+003	4.000000e-004	3.20642268	0.00390087	5.14857964	-0.00531909
+1500	-3.38064129E+003			3.20629761			5.14885351	
+Exp						3.2094				5.2105
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %
+Mg    3.205     3.2094     -0.1      5.149   5.2105    -1.2  
+Mg2Sn 6.765     6.765       0.0
+MgO   4.242     4.188       1.3
+MgTl  3.627     3.628       0.0
+Mg2Ge 6.385     6.3849      0.0
+Mg2Si 6.346     6.338       0.1
+MgZn2 5.106     5.222      -2.2      8.473   8.568     -1.1
+MgF2  4.667     4.623       0.9      3.088   3.052      1.2
+KMgF3 4.011     3.978       0.8
+CaMg2 6.211     6.2528     -0.7     10.012  10.1435    -1.3
+
+        
+END_COMMENT
+

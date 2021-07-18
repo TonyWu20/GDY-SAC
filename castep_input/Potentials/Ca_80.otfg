@@ -1,0 +1,57 @@
+CHARGE = 10                 number of valence electrons
+COARSE = 8.0                coarse energy cutoff (Ha)
+MEDIUM = 10.0               medium energy cutoff (Ha)
+FINE = 12.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid: 7x7x7, Grid: Fine, xc-functional: PBE
+
+Ecut          E0                delta E0              a             delta a %
+    Ca          
+200	-1.00278358E+003	1.55838000	6.30777141	14.13843583
+300	-1.00433110E+003	0.01086000	5.54014377	0.24829755
+400	-1.00434159E+003	3.700000e-004	5.52595090	-0.00852095
+500	-1.00434164E+003	3.200000e-004	5.52546057	-0.01739348
+600	-1.00434179E+003	1.700000e-004	5.52636038	-0.00111152
+700	-1.00434185E+003	1.100000e-004	5.52639157	-5.470402e-004
+800	-1.00434189E+003	7.000000e-005	5.52642372	3.456982e-005
+900	-1.00434195E+003	1.000000e-005	5.52649505	0.00132539
+1000	-1.00434196E+003			5.52642181	
+exp                                             5.559 
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %
+CaMg2 6.211     6.2528     -0.7     10.012  10.1435    -1.3
+Ca    5.456     5.559      -1.8
+CaO   4.769     4.8105     -0.9
+CaF2  5.424     5.463      -0.7
+CaWO4 5.225     5.2429     -0.3     11.234  11.3737    -1.2
+
+END_COMMENT
+

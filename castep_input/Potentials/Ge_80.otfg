@@ -1,0 +1,55 @@
+CHARGE = 14                 number of valence electrons
+COARSE = 11.0               coarse energy cutoff (Ha)
+MEDIUM = 13.0               medium energy cutoff (Ha)
+FINE = 14.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a       delta a %
+    Ge          
+250	-5.06173895E+003	7.53119000	8.27679353	43.67869425
+300	-5.07432253E+003	1.23940000	6.06868888	5.34771591
+350	-5.07634871E+003	0.22631000	5.83145041	1.22944071
+400	-5.07673304E+003	0.03415000	5.77863036	0.31252579
+450	-5.07679478E+003	0.00328000	5.76363970	0.05229967
+500	-5.07680082E+003	2.600000e-004	5.76023095	-0.00687370
+550	-5.07680098E+003	1.800000e-004	5.76002894	-0.01038034
+600	-5.07680110E+003	1.200000e-004	5.75991778	-0.01230996
+650	-5.07680117E+003	8.000000e-005	5.76061163	-2.653040e-004
+700	-5.07680120E+003	7.000000e-005	5.76056640	-0.00105049
+750	-5.07680126E+003	4.000000e-005	5.76051597	-0.00192587
+800	-5.07680133E+003			5.76062692	
+exp                                             5.646
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %
+Mg2Ge  6.385     6.3849      0.0
+Ge     5.675     5.646       0.5
+GeO2   4.430     4.40656     0.5       2.889  2.86186   0.9
+Nb3GeN 5.105     5.168      -1.2    
+
+END_COMMENT
+

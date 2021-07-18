@@ -1,0 +1,83 @@
+CHARGE = 10                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 12.1               medium energy cutoff (Ha)
+FINE = 14.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %
+    Ni       
+200	-1.34624845E+003	16.25434000	3.72018255	5.94354250
+250	-1.35705514E+003	5.44765000	4.42385573	25.98278209
+300	-1.36161485E+003	0.88794000	3.60405184	2.63636660
+350	-1.36232794E+003	0.17485000	3.52745392	0.45500705
+400	-1.36247630E+003	0.02649000	3.51616836	0.13361640
+450	-1.36250046E+003	0.00233000	3.51250429	0.02927094
+500	-1.36250256E+003	2.300000e-004	3.51148844	3.413477e-004
+550	-1.36250259E+003	2.000000e-004	3.51148375	2.078000e-004
+600	-1.36250266E+003	1.300000e-004	3.51146444	-3.420138e-004
+650	-1.36250268E+003	1.100000e-004	3.51145762	-5.361905e-004
+700	-1.36250269E+003	1.000000e-004	3.51146604	-2.963802e-004
+750	-1.36250274E+003	5.000000e-005	3.51147709	1.815340e-005
+800	-1.36250279E+003			3.51147645	
+   
+200	-1.30353876E+003	8.98969000	3.57249813	1.71737699
+250	-1.31038401E+003	2.14444000	3.90389670	11.15306932
+300	-1.31224007E+003	0.28838000	3.55882520	1.32807680
+350	-1.31249475E+003	0.03370000	3.51911794	0.19751815
+400	-1.31252581E+003	0.00264000	3.51323440	0.02999994
+450	-1.31252713E+003	0.00132000	3.51212719	-0.00152479
+500	-1.31252750E+003	9.500000e-004	3.51212812	-0.00149825
+550	-1.31252783E+003	6.200000e-004	3.51221109	8.641076e-004
+600	-1.31252787E+003	5.800000e-004	3.51219843	5.036424e-004
+650	-1.31252795E+003	5.000000e-004	3.51212119	-0.00169573
+700	-1.31252816E+003	2.900000e-004	3.51217810	-7.541360e-005
+750	-1.31252836E+003	9.000000e-005	3.51218688	1.745282e-004
+800	-1.31252845E+003	        	3.51218075	
+exp                                             3.524    
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a      a exp    delta a %     c    c exp   delta c %
+Ni3Al 3.519    3.572     -1.5    
+
+
+
+Ecut    E0      delta E0    a   delta a %       c   delta c %
+    NiAs                    
+360 -4042.64372 0.020631812 3.652036    1.389   5.047862    0.776
+800 -4042.664352    0       3.650773    1.354   5.048566    0.790
+exp                         3.602               5.009   
+                                                
+Ecut        a       delta a %   c   delta c %   
+    NiF2                    
+610     4.682418    0.777   3.133216    1.791   
+exp     4.6463              3.0781      
+            
+END_COMMENT
+

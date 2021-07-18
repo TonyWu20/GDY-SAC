@@ -1,0 +1,65 @@
+CHARGE = 22                 number of valence electrons
+COARSE = 8.1                coarse energy cutoff (Ha)
+MEDIUM = 9.0                medium energy cutoff (Ha)
+FINE = 10.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.5           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.8                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Ultra-fine settings, bulk Pb
+
+Ecut	     Energy	          Energy Diff	     a	          % a
+200	-5.42561444E+003	3.88720000	7.10280034	41.26292308
+250	-5.42932408E+003	0.17756000	5.11135916	1.65645946
+300	-5.42949388E+003	0.00776000	5.03558439	0.14942500
+350	-5.42950137E+003	2.700000e-004	5.02875309	0.01356170
+400	-5.42950148E+003	1.600000e-004	5.02753034	-0.01075679
+450	-5.42950151E+003	1.300000e-004	5.02850793	0.00868587
+500	-5.42950154E+003	1.000000e-004	5.02830893	0.00472825
+550	-5.42950158E+003	6.000000e-005	5.02762798	-0.00881476
+600	-5.42950160E+003	4.000000e-005	5.02788243	-0.00375421
+650	-5.42950161E+003	3.000000e-005	5.02778084	-0.00577469
+700	-5.42950163E+003	1.000000e-005	5.02799180	-0.00157902
+750	-5.42950164E+003	0		5.02822580	0.00307485
+800	-5.42950164E+003			5.02807120	
+
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %  
+Pb     4.923     4.925       0.0  
+PbF2   5.897     5.943      -0.8
+PbS    5.897     5.9143     -0.3
+PbSe   6.097     6.1054     -0.1
+PbTe   6.437     6.4384      0.0
+
+END_COMMENT

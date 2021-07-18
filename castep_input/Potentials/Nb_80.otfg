@@ -1,0 +1,62 @@
+CHARGE = 13                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 12.9               medium energy cutoff (Ha)
+FINE = 14.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 1.6           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %
+    Nb     
+200	-1.64542623E+003	11.18809000	3.66317793	10.50787491
+250	-1.65341229E+003	3.20203000	3.37293867	1.75216478
+300	-1.65569282E+003	0.92150000	3.33887249	0.72448297
+350	-1.65639915E+003	0.21517000	3.33498380	0.60717186
+400	-1.65657202E+003	0.04230000	3.31926398	0.13294890
+450	-1.65660525E+003	0.00907000	3.31505309	0.00591805
+500	-1.65661143E+003	0.00289000	3.31499468	0.00415583
+550	-1.65661266E+003	0.00166000	3.31483237	-7.404709e-004
+600	-1.65661316E+003	0.00116000	3.31480707	-0.00150368
+650	-1.65661356E+003	7.600000e-004	3.31482041	-0.00110138
+700	-1.65661389E+003	4.300000e-004	3.31483502	-6.606613e-004
+750	-1.65661412E+003	2.000000e-004	3.31485214	-1.440616e-004
+800	-1.65661432E+003			3.31485692	
+exp                                             3.296
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %      
+NbSi2  4.775     4.79       -0.3       6.557  6.59     -0.5
+Nb     3.277     3.296      -0.6
+NbN    4.379     4.394      -0.3
+NbO    4.190     4.2103     -0.5 
+Nb3GeN 5.105     5.168      -1.2
+
+END_COMMENT
+

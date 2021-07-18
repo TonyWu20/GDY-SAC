@@ -1,0 +1,58 @@
+CHARGE = 16                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 13.0               medium energy cutoff (Ha)
+FINE = 14.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+Se2 diatomic
+
+Ecut	     Energy	        Energy Diff	   Bond	         Bond %
+200	-6.80557380E+003	20.65620000	2.26958192	3.00928771
+250	-6.83859766E+003	4.14427000	2.18759514	-0.71183786
+300	-6.84513104E+003	0.87758000	2.20539529	0.09605555
+350	-6.84654671E+003	0.16974000	2.20348618	0.00940706
+400	-6.84683499E+003	0.02560000	2.20326356	-6.970762e-004
+450	-6.84687738E+003	0.00441000	2.20401509	0.03341258
+500	-6.84688592E+003	1.400000e-004	2.20333828	0.00269461
+550	-6.84688621E+003	-1.000000e-005	2.20312366	-0.00704632
+600	-6.84688585E+003	1.700000e-004	2.20317135	-0.00488196
+650	-6.84688643E+003	-1.200000e-004	2.20332226	0.00196747
+700	-6.84688674E+003	-2.800000e-004	2.20344098	0.00735558
+750	-6.84688632E+003	-7.000000e-005	2.20352420	0.01113261
+800	-6.84688619E+003			2.20327892	
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+
+        a        a exp    delta a %   
+BeSe   5.132     5.139      -0.1
+ZnSe   5.633     5.6676     -0.6
+CdSe   6.086     6.05        0.6
+BaSe   6.563     6.6        -0.6
+HgSe   6.131     6.084       0.8
+PbSe   6.097     6.1054     -0.1
+    
+END_COMMENT
+

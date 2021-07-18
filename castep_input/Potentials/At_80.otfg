@@ -1,0 +1,42 @@
+CHARGE = 17                 number of valence electrons
+COARSE = 9.2                coarse energy cutoff (Ha)
+MEDIUM = 10.5               medium energy cutoff (Ha)
+FINE = 11.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+Tests on At2 dimer in a box
+
+Ecut	    Energy	        Energy Diff	    Bond	    Bond %
+
+200	-5.55835370E+003	4.99000000	2.85030710	-0.54837475
+250	-5.56735506E+003	0.49000000	2.86522297	-0.02793696
+300	-5.56827700E+003	0.02900000	2.86507798	-0.03299589
+350	-5.56833123E+003	0.00100000	2.86527075	-0.02626985
+400	-5.56833219E+003	0.00100000	2.86598201	-0.00145288
+450	-5.56833290E+003	0.00100000	2.86562272	-0.01398907
+500	-5.56833307E+003	0.00100000	2.86562891	-0.01377309
+550	-5.56833357E+003	0.00000000	2.86602835	1.639900e-004
+600	-5.56833403E+003	0.00000000	2.86565292	-0.01293534
+650	-5.56833415E+003	    		2.86602365	
+
+END_COMMENT
+

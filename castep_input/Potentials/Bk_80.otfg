@@ -1,0 +1,49 @@
+CHARGE = 19                 number of valence electrons
+COARSE = 11.4               coarse energy cutoff (Ha)
+MEDIUM = 13.6               medium energy cutoff (Ha)
+FINE = 16.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: hcp Bk
+Ecut         Energy      Energy Diff             a            % a           c               %c
+300	-1.293488e+004	3.44200000	3.69788968	8.54797172	12.13898377	7.48632074
+350	-1.294549e+004	0.78820000	3.49862610	2.69878206	11.56122313	2.37045878
+400	-1.294819e+004	0.11400000	3.45111443	1.30412319	11.40976999	1.02939589
+450	-1.294856e+004	0.02170000	3.41557246	0.26082298	11.32072922	0.24097194
+500	-1.294857e+004	0.01830000	3.40760257	0.02687460	11.29988525	0.05640613
+550	-1.294860e+004	0.01160000	3.40774456	0.03104263	11.29854219	0.04451381
+600	-1.294863e+004	0.00470000	3.40772558	0.03048527	11.29728809	0.03340919
+650	-1.294864e+004	0.00180000	3.40712079	0.01273251	11.29490954	0.01234800
+700	-1.294864e+004	0.00140000	3.40678027	0.00273662	11.29397239	0.00404992
+750	-1.294864e+004	0.00100000	3.40662540	-0.00180927	11.29357384	5.208587e-004
+800	-1.294865e+004			3.40668704			11.29351501	
+exp					3.428				11.075
+
+
+END_COMMENT
+

@@ -1,0 +1,40 @@
+CHARGE = 8                  number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 15.0               medium energy cutoff (Ha)
+FINE = 20.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.4           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut             E0               delta E0        a       delta a %
+    Ne          
+500	-9.55322119E+002	0.00998900	4.71372003	3.11921579
+600	-9.55324900E+002	0.00720800	4.57330338	0.04740529
+700	-9.55327801E+002	0.00430700	4.57239644	0.02756469
+800	-9.55328511E+002	0.00359700	4.57257879	0.03155386
+900	-9.55328838E+002	0.00327000	4.57474350	0.07890995
+1000	-9.55330014E+002	0.00209400	4.56746296	-0.08036209
+1100	-9.55331087E+002	0.00102100	4.57025894	-0.01919612
+1200	-9.55331511E+002	5.970000e-004	4.57110548	-6.767576e-004
+1300	-9.55331558E+002	5.500000e-004	4.57205507	0.02009672
+1400	-9.55331700E+002	4.080000e-004	4.58450440	0.29244339
+1500	-9.55332108E+002			4.57113642	
+exp                                             4.462 
+                    
+END_COMMENT
+

@@ -1,0 +1,56 @@
+CHARGE = 19                 number of valence electrons
+COARSE = 16.5               coarse energy cutoff (Ha)
+MEDIUM = 18.0               medium energy cutoff (Ha)
+FINE = 19.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 1.6           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing and structure validation
+============================================
+Ecut       E0 (eV)  	delta E0   	 a        	 delta a %
+300	-3.972592e+003	33.64800000	5.93704448	43.23802764
+350	-3.991982e+003	14.25800000	5.95662395	43.71040495
+400	-4.000974e+003	5.26600000	4.90002346	18.21870264
+450	-4.004625e+003	1.61600000	4.28555770	3.39400933
+500	-4.005766e+003	0.47400000	4.17343001	0.68879989
+550	-4.006112e+003	0.12800000	4.15345540	0.20688939
+600	-4.006207e+003	0.03300000	4.13547842	-0.22682601
+650	-4.006242e+003	0.00200000	4.14194859	-0.07072575
+700	-4.006245e+003	0.00500000	4.14056716	-0.10405433
+750	-4.006245e+003	0.00500000	4.14031450	-0.11014995
+800	-4.006240e+003	0.00000000	4.14488008	0
+exp                                     4.064
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %   
+Ag     4.042     4.064      -0.5       
+Ag2O   4.708     4.76       -1.1
+AgBr   5.665     5.7721     -1.9
+AgCl   5.437     5.436       0.0      
+TcAgO4 5.267     5.3026     -0.7      11.403 11.81     -3.4 
+
+END_COMMENT
