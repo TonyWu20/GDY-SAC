@@ -1,5 +1,5 @@
 """
-Convert .xsd file to .cell
+Class objects about .cell file generations.
 """
 import xml.etree.ElementTree as ET
 from typing import Tuple, List
@@ -7,8 +7,6 @@ from pathlib import Path
 import yaml as y
 import dpath.util as dp
 from mendeleev import element
-from p_tqdm import p_map
-from fire import Fire
 
 
 class GDYLattice:
@@ -19,7 +17,7 @@ class GDYLattice:
         self.filepath = filepath
         self.tree = ET.parse(self.filepath)
         self.metal = filepath.stem.split("_")[2]
-        with open("element_table.yaml", 'r') as file:
+        with open("castep_input/element_table.yaml", 'r') as file:
             self.table = y.full_load(file)
         self.metal_prop = dp.get(self.table, f'*/{self.metal}')
         self.spin = self.metal_prop['spin']
@@ -296,24 +294,50 @@ class CellFile(GDYLattice):
                 file.writelines(item)
 
 
-def generate_cell(xsd_path: Path):
+class DOSCellFile(CellFile):
     """
-    Generate .cell file for CASTEP input
-    Args:
-        xsd_path (Path): Path object of xsd file
+    *DOS.cell file. Subclass of CellFile.
     """
-    cell = CellFile(xsd_path)
-    cell.write_cell()
+    def block_misc(self) -> List[str]:
+        """
+        Write common settings in .cell
+        returns:
+            misc: misc settings block. Not affected by elements.
+        """
+        kpoints = [
+            "   0.0000000000000000   0.0000000000000000   0.0000000000000000       1.000000000000000\n"
+        ]
+        bskpoint_list = self.write_block("BS_KPOINT_LIST", kpoints)
+        kpoint_list = self.write_block("KPOINTS_LIST", kpoints)
+        line1 = ["FIX_ALL_CELL : true\n\n"]
+        line2 = [
+            "FIX_COM : false\n", "%BLOCK IONIC_CONSTRAINTS\n",
+            "%ENDBLOCK IONIC_CONSTRAINTS\n\n"
+        ]
+        efield = ["    0.0000000000     0.0000000000     0.0000000000 \n"]
+        external_efield = self.write_block("EXTERNAL_EFIELD", efield)
+        pressure_1 = "    0.0000000000    0.0000000000    0.0000000000\n"
+        pressure_2 = "                    0.0000000000    0.0000000000\n"
+        pressure_3 = "                                    0.0000000000\n"
+        pressure = self.write_block("EXTERNAL_PRESSURE",
+                                    [pressure_1, pressure_2, pressure_3])
+        misc = bskpoint_list + kpoint_list + line1 + line2 + external_efield + pressure
+        return misc
 
-
-def main(xsd_pattern: str):
-    """
-    Main function to execute
-    """
-    root = Path.cwd()
-    files = list(root.rglob(xsd_pattern))
-    p_map(generate_cell, files)
-
-
-if __name__ == "__main__":
-    Fire(main)
+    def write_cell(self):
+        """
+        Write blocks to .cell file
+        """
+        stem = self.filepath.stem
+        cellfile = self.filepath.parent / f"{stem}_DOS_test.cell"
+        contents = [
+            self.block_lattice(),
+            self.block_frac(),
+            self.block_misc(),
+            self.block_masses(),
+            self.block_pot(),
+            self.block_LCAO()
+        ]
+        with open(cellfile, 'w', newline='\r\n') as file:
+            for item in contents:
+                file.writelines(item)
