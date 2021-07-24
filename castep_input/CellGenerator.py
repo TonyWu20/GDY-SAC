@@ -329,7 +329,10 @@ class DOSCellFile(CellFile):
         Write blocks to .cell file
         """
         stem = self.filepath.stem
-        cellfile = self.filepath.parent / f"{stem}_DOS_test.cell"
+        castep_dir = self.filepath.parent / f"{stem}_opt"
+        if not castep_dir.exists():
+            castep_dir.mkdir(parents=True)
+        cellfile = castep_dir / f"{stem}_DOS_test.cell"
         contents = [
             self.block_lattice(),
             self.block_frac(),
