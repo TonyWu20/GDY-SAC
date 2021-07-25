@@ -36,12 +36,12 @@ class ParamFile(GDYLattice):
             for item in pot_files
         ]
 
-        def roundup_tenth(number: int):
+        def roundup_tenth(number: float):
             """
             Round up number to the bigger nearest tenth.
             E.g.: 374 -> 380; 376 -> 380.
             Args:
-                number (int)
+                number (float)
             returns:
                 res (int): bigger nearest tenth.
             """
