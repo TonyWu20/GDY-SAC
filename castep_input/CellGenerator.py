@@ -312,7 +312,7 @@ class CellFile(GDYLattice):
         Write blocks to .cell file
         """
         stem = self.filepath.stem
-        cellfile = self.castep_dir / f"{stem}_test.cell"
+        cellfile = self.castep_dir / f"{stem}.cell"
         contents = [
             self.block_lattice(),
             self.block_frac(),
@@ -361,7 +361,7 @@ class DOSCellFile(CellFile):
         Write blocks to .cell file
         """
         stem = self.filepath.stem
-        cellfile = self.castep_dir / f"{stem}_DOS_test.cell"
+        cellfile = self.castep_dir / f"{stem}_DOS.cell"
         contents = [
             self.block_lattice(),
             self.block_frac(),
