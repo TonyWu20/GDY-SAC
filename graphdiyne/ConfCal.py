@@ -22,6 +22,7 @@ class Molecule:
         assert filepath.suffix == ".msi", "Wrong format of model (not msi)!"
         self.filepath = filepath
         self.__text = filepath.read_text()
+        self.dest = filepath.parent.name
 
     @property
     def elements(self) -> List[str]:
