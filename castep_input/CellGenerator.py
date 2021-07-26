@@ -2,7 +2,8 @@
 Class objects about .cell file generations.
 """
 import xml.etree.ElementTree as ET
-from typing import Tuple, List
+from typing import Tuple, List, Optional
+from itertools import chain
 from pathlib import Path
 import yaml as y
 import dpath.util as dp
@@ -113,6 +114,26 @@ class GDYLattice:
         lines = [get_frac(atm) for atm in atoms]
         return lines
 
+    def get_atomid_by_elm(self, elm) -> List[Optional[str]]:
+        """
+        Get atom id(s) for input elements.
+        Args:
+            elm (str): elements
+        """
+        atoms = self.tree.findall(f".//Atom3d[@Components='{elm}']")
+        user_ids = [atom.get("UserID") for atom in atoms]
+        return user_ids
+
+    @property
+    def atom_ids_by_elm(self) -> List[Optional[str]]:
+        """
+        All atom ids sorted in atomic number. For .trjaux file use.
+        """
+        elements = self.elements
+        res = [self.get_atomid_by_elm(elm) for elm in elements]
+        atom_ids = list(chain.from_iterable(res))
+        return atom_ids
+
     @property
     def all_frac_coords(self) -> List[str]:
         """
@@ -180,6 +201,17 @@ class GDYLattice:
             for elm, lcao in zip(aligned_elements, lcao_strings)
         ]
         return lcao_lines
+
+    @property
+    def castep_dir(self):
+        """
+        Directory to put input files
+        """
+        stem = self.filepath.stem
+        castep_dir = self.filepath.parent / f"{stem}_opt"
+        if not castep_dir.exists():
+            castep_dir.mkdir(parents=True)
+        return castep_dir
 
 
 class CellFile(GDYLattice):
@@ -280,7 +312,7 @@ class CellFile(GDYLattice):
         Write blocks to .cell file
         """
         stem = self.filepath.stem
-        cellfile = self.filepath.parent / f"{stem}_test.cell"
+        cellfile = self.castep_dir / f"{stem}_test.cell"
         contents = [
             self.block_lattice(),
             self.block_frac(),
@@ -329,10 +361,7 @@ class DOSCellFile(CellFile):
         Write blocks to .cell file
         """
         stem = self.filepath.stem
-        castep_dir = self.filepath.parent / f"{stem}_opt"
-        if not castep_dir.exists():
-            castep_dir.mkdir(parents=True)
-        cellfile = castep_dir / f"{stem}_DOS_test.cell"
+        cellfile = self.castep_dir / f"{stem}_DOS_test.cell"
         contents = [
             self.block_lattice(),
             self.block_frac(),

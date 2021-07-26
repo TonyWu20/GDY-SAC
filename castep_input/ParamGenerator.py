@@ -3,6 +3,7 @@ Generate .param file
 """
 import re
 from pathlib import Path
+import shutil
 import dpath.util as dp
 from castep_input.CellGenerator import GDYLattice
 
@@ -62,7 +63,7 @@ class ParamFile(GDYLattice):
         Output filename for .param
         """
         stem = self.filepath.stem
-        param_file = self.filepath.parent / f"{stem}_test.param"
+        param_file = self.castep_dir / f"{stem}_test.param"
         return param_file
 
     @property
@@ -71,7 +72,7 @@ class ParamFile(GDYLattice):
         Output filename for .param
         """
         stem = self.filepath.stem
-        param_file = self.filepath.parent / f"{stem}_DOS_test.param"
+        param_file = self.castep_dir / f"{stem}_DOS_test.param"
         return param_file
 
     def write_param(self):
@@ -99,3 +100,75 @@ class ParamFile(GDYLattice):
         sub_spin = spin_pat.sub(str(self.spin), sub_cutoff)
         with open(self.dos_param_filename, 'w', newline='\r\n') as file:
             file.write(sub_spin)
+
+    def copy_potentials(self):
+        """
+        Copy specified potentials to directory
+        """
+        potentials = self.get_potentials()
+        new_dest = [self.castep_dir / f"{file.name}" for file in potentials]
+        for source, dest in zip(potentials, new_dest):
+            shutil.copy(source, dest)
+
+    def write_pbs_scripts(self):
+        """
+        Generate hpc.pbs.sh for server running
+        """
+        seed_name = self.filepath.stem
+        cmd_prefix = "mpirun --mca btl ^tcp --hostfile hostfile /home/bhuang/castep.mpi"
+        cmd = f"{cmd_prefix} {seed_name}\n"
+        eof = "rm ./hostfile"
+        template = Path("castep_input/pbs_template.sh")
+        contents = template.read_text() + cmd + eof
+        with open(self.castep_dir / "hpc.pbs.sh", 'w', newline='\r\n') as file:
+            file.write(contents)
+
+
+class MiscFile(GDYLattice):
+    """
+    Misc files generations.
+    """
+    def write_kptaux(self):
+        """
+        Generate .kptaux file
+        """
+        content = ("MP_GRID :        1       1       1\n"
+                   "MP_OFFSET :   0.000000000000000e+000"
+                   " 0.000000000000000e+000"
+                   " 0.000000000000000e+000\n"
+                   "%BLOCK KPOINT_IMAGES\n"
+                   "   1   1\n"
+                   "%ENDBLOCK KPOINT_IMAGES")
+        filepath = self.castep_dir / f"{self.filepath.stem}.kptaux"
+        dos_filepath = self.castep_dir / f"{self.filepath.stem}_DOS.kptaux"
+        with open(filepath, 'w', newline='\r\n') as file:
+            file.write(content)
+        with open(dos_filepath, 'w', newline='\r\n') as file:
+            file.write(content)
+
+    def write_trjaux(self):
+        """
+        Generate .trjaux file
+        """
+        atom_ids = self.atom_ids_by_elm
+        start_comments = ("# Atom IDs to appear in any .trj file to be"
+                          " generated.\n"
+                          "# Correspond to atom IDs which will be used"
+                          " in exported .msi file\n"
+                          "# required for animation/analysis of trajectory"
+                          " within Cerius2.\n")
+        atom_ids_lines = [f"{item}\n" for item in atom_ids]
+        end_comments = ("#Origin  0.000000000000000e+000 "
+                        "0.000000000000000e+000  0.000000000000000e+000")
+        contents = [start_comments] + atom_ids_lines + [end_comments]
+        filepath = self.castep_dir / f"{self.filepath.stem}.trjaux"
+        with open(filepath, 'w', newline='\r\n') as file:
+            file.writelines(contents)
+
+    def copy_smcastep(self):
+        """
+        Copy SMCastep_Extension
+        """
+        extension = Path("castep_input/SMCastep_Extension.xms")
+        new_dest = self.castep_dir / f"SMCastep_Extension_{self.filepath.stem}.xms"
+        shutil.copy(extension, new_dest)
