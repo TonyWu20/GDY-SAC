@@ -63,7 +63,7 @@ class ParamFile(GDYLattice):
         Output filename for .param
         """
         stem = self.filepath.stem
-        param_file = self.castep_dir / f"{stem}_test.param"
+        param_file = self.castep_dir / f"{stem}.param"
         return param_file
 
     @property
@@ -72,7 +72,7 @@ class ParamFile(GDYLattice):
         Output filename for .param
         """
         stem = self.filepath.stem
-        param_file = self.castep_dir / f"{stem}_DOS_test.param"
+        param_file = self.castep_dir / f"{stem}_DOS.param"
         return param_file
 
     def write_param(self):
