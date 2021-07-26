@@ -172,3 +172,14 @@ class MiscFile(GDYLattice):
         extension = Path("castep_input/SMCastep_Extension.xms")
         new_dest = self.castep_dir / f"SMCastep_Extension_{self.filepath.stem}.xms"
         shutil.copy(extension, new_dest)
+
+    def move_structures(self):
+        """
+        Move structure files into castep folder
+        """
+        xsd_file = self.filepath
+        new_dest = self.castep_dir / xsd_file.name
+        xsd_file.rename(new_dest)
+        msi_file = self.filepath.parent / f"{self.filepath.stem}.msi"
+        new_msi_dest = self.castep_dir / msi_file.name
+        msi_file.rename(new_msi_dest)

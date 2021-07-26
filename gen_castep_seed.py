@@ -44,6 +44,7 @@ def generate_param(xsd_path: Path):
     misc.write_kptaux()
     misc.write_trjaux()
     misc.copy_smcastep()
+    misc.move_structures()
 
 
 def main(xsd_pattern: str):
