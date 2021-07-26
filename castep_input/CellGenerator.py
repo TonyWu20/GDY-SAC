@@ -208,9 +208,12 @@ class GDYLattice:
         Directory to put input files
         """
         stem = self.filepath.stem
-        castep_dir = self.filepath.parent / f"{stem}_opt"
-        if not castep_dir.exists():
-            castep_dir.mkdir(parents=True)
+        if not "opt" in self.filepath.parent.name:
+            castep_dir = self.filepath.parent / f"{stem}_opt"
+            if not castep_dir.exists():
+                castep_dir.mkdir(parents=True)
+        else:
+            castep_dir = self.filepath.parent
         return castep_dir
 
 
