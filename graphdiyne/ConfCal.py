@@ -167,12 +167,15 @@ class ModelFactory:
         """
         Export setup in perl scripts
         """
+        filename = f"{self.mol.filepath.stem}_{site}"
         begin_line = "    $doc->CalculateBonds;\n"
-        export_msi = ('    $doc->Export("${output}_'
-                      f'{self.mol.filepath.stem}_{site}.msi");\n')
-        export_xsd = ('    $doc->Export("${output}_'
-                      f'{self.mol.filepath.stem}_{site}.xsd");\n')
-        end_line = "    $doc->Discard;\n    $doc->Close;\n}"
+        export_msi = ('    $doc->Export("${output}_' f'{filename}.msi");\n')
+        export_xsd = ('    my $msi = $Documents{"'
+                      f'{filename}.msi"' + '};\n'
+                      '    $msi->Export("'
+                      f'{filename}.xsd");\n')
+        end_line = ("    $msi->Close;\n"
+                    "    $doc->Discard;\n    $doc->Close;\n}")
         result = [begin_line, export_msi, export_xsd, end_line]
         return result
 
