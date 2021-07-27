@@ -34,7 +34,7 @@ class Scriptor(conf.ModelFactory):
         """
         Output scripts by directory
         """
-        outdir = Path(self.mol.dest + "/" + lat_dir.name +
+        outdir = Path(self.mol.dest + f"_{lat_dir.name}/" + lat_dir.name +
                       f"_{self.mol.filepath.stem}/{site}")
         if not outdir.exists():
             outdir.mkdir(parents=True)
