@@ -170,9 +170,9 @@ class ModelFactory:
         filename = f"{self.mol.filepath.stem}_{site}"
         begin_line = "    $doc->CalculateBonds;\n"
         export_msi = ('    $doc->Export("${output}_' f'{filename}.msi");\n')
-        export_xsd = ('    my $msi = $Documents{"'
+        export_xsd = ('    my $msi = $Documents{"${output}_'
                       f'{filename}.msi"' + '};\n'
-                      '    $msi->Export("'
+                      '    $msi->Export("${output}_'
                       f'{filename}.xsd");\n')
         end_line = ("    $msi->Close;\n"
                     "    $doc->Discard;\n    $doc->Close;\n}")
