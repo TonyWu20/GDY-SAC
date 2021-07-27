@@ -1,0 +1,52 @@
+CHARGE = 11                  number of valence electrons
+COARSE = 5.0                coarse energy cutoff (Ha)
+MEDIUM = 6.0                medium energy cutoff (Ha)
+FINE =   7.0                fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = LOCAL   Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: metallic Ac
+Ecut       Energy               Energy Diff             a            % a   
+100	-1.19589708E+003	1.37288000	6.14511482	6.85865950
+150	-1.19721829E+003	0.05167000	5.78296162	0.56110334
+200	-1.19725515E+003	0.01481000	5.75429090	0.06254245
+250	-1.19726416E+003	0.00580000	5.75275532	0.03583997
+300	-1.19726761E+003	0.00235000	5.75140940	0.01243540
+350	-1.19726878E+003	0.00118000	5.75075461	0.00104912
+400	-1.19726920E+003	7.600000e-004	5.75073623	7.295211e-004
+450	-1.19726945E+003	5.100000e-004	5.75070012	1.015621e-004
+500	-1.19726962E+003	3.400000e-004	5.75067831	-2.776984e-004
+550	-1.19726977E+003	1.900000e-004	5.75069085	-5.964539e-005
+600	-1.19726986E+003	1.000000e-004	5.75074629	9.044891e-004
+650	-1.19726990E+003	6.000000e-005	5.75078874	0.00164268
+700	-1.19726992E+003	4.000000e-005	5.75081651	0.00212559
+750	-1.19726994E+003	2.000000e-005	5.75071704	3.958581e-004
+800	-1.19726996E+003			5.75069428	    
+exp						5.317
+    
+
+END_COMMENT
+

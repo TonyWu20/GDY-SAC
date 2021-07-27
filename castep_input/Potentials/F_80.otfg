@@ -1,0 +1,67 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 10.5               coarse energy cutoff (Ha)
+MEDIUM = 13.0               medium energy cutoff (Ha)
+FINE = 14.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.2           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+F2 molecule
+
+Ecut	     Energy	        Energy Diff	  Bond	          Bond %
+300	-1.30405685E+003	7.45588000	1.44861866	2.28807173
+400	-1.31601758E+003	1.47552000	1.39735333	-1.33181191
+500	-1.31848233E+003	0.24314000	1.41372484	-0.17580702
+600	-1.31891806E+003	0.02528000	1.41638436	0.01198332
+700	-1.31896203E+003	0.00329000	1.41619394	-0.00146250
+800	-1.31896348E+003	0.00257000	1.41618286	-0.00224467
+900	-1.31896648E+003	0.00107000	1.41619860	-0.00113305
+1000	-1.31896861E+003			1.41621465	
+exp                                             1.42
+
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %    b    b exp   delta b %
+MgF2  4.667     4.623       0.9      3.088   3.052      1.2
+KMgF3 4.011     3.978       0.8
+NaF   4.647     4.579       1.5
+KF    5.306     5.347      -0.8
+CaF2  5.424     5.463      -0.7
+RbF   5.615     5.64       -0.4
+LiF   4.003     3.964       0.9 
+YF3   6.325     6.353      -0.4      4.377   4.393     -0.4      6.839   6.850   -0.2
+SrF2  5.760     5.7996     -0.7    
+SrFCl 4.084     4.126      -1.0      6.917   6.958     -0.6
+SrFBr 4.176     4.218      -1.0      7.300   7.337     -0.5
+BaFBr 4.473     4.508      -0.8      7.412   7.441     -0.4
+BaFCl 4.357     4.394      -0.8      7.193   7.225     -0.4
+BaFI  4.612     4.654      -0.9      7.915   7.962     -0.6
+KrF2  1.898     1.89        0.4 (bond length)
+XeF2  2.030     1.983       2.4 (bond length)
+CdF2  5.410     5.381       0.5 
+CsF   5.976     5.975       0.0
+BaF2  6.168     6.1964     -0.5
+PbF2  5.897     5.943      -0.8
+BiOF  3.732     3.748      -0.5      6.164   6.224     -1.0  
+
+HArF    H-Ar   H-Ar exp delta %   F-Ar F-Ar exp    delta %
+        1.375   1.33     3.3     1.965   1.97        -0.3
+
+END_COMMENT
+

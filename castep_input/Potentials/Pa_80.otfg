@@ -1,0 +1,55 @@
+CHARGE = 13                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 12.5               medium energy cutoff (Ha)
+FINE = 14.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = PSEUDIZE_ONLY  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBE
+System: bct Pa
+Ecut       Energy               Energy Diff             a            % a       		c		%c
+250	-1.57928680E+003	2.76435000	3.78680444	-0.40020696	3.04222734	-1.89196611
+300	-1.58123246E+003	0.81869000	3.86011025	1.52786828	3.12364857	0.73376680
+350	-1.58188070E+003	0.17045000	3.81960425	0.46248737	3.11049053	0.30943643
+400	-1.58201885E+003	0.03230000	3.80849940	0.17040975	3.10475263	0.12439655
+450	-1.58204532E+003	0.00583000	3.80310137	0.02843192	3.10153332	0.02057779
+500	-1.58204979E+003	0.00136000	3.80214498	0.00327704	3.10100505	0.00354170
+550	-1.58205047E+003	6.800000e-004	3.80206731	0.00123420	3.10095142	0.00181220
+600	-1.58205073E+003	4.200000e-004	3.80205127	8.121896e-004	3.10093257	0.00120423
+650	-1.58205089E+003	2.600000e-004	3.80203402	3.585520e-004	3.10091180	5.345526e-004
+700	-1.58205099E+003	1.600000e-004	3.80202501	1.217090e-004	3.10090158	2.048772e-004
+750	-1.58205108E+003	7.000000e-005	3.80202145	2.788756e-005	3.10089764	7.787248e-005
+800	-1.58205115E+003			3.80202039			3.10089523	
+	
+
+
+END_COMMENT
+

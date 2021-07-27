@@ -1,0 +1,77 @@
+CHARGE = 12                 number of valence electrons
+COARSE = 8.7                coarse energy cutoff (Ha)
+MEDIUM = 9.5                medium energy cutoff (Ha)
+FINE = 11.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= 0.0 && 0.1  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.0             Qc value (used only by qc, qb, and es schemes)
+PSEUDO_Q0 = 4.0             Q0 value (used only by qc, qb, and es schemes)
+
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+BETA_RADIUS = 2.3           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut             E0              delta E0            a           delta a %           c           delta c %
+    Cd
+250	-2.93437154E+003	0.79845000	3.33286059	9.77628826	6.47283316	14.25946746
+300	-2.93588600E+003	0.04122000	3.06111864	0.82577227	5.72446004	1.04906773
+350	-2.93596316E+003	0.00264000	3.03769880	0.05437977	5.66770704	0.04725483
+400	-2.93596442E+003	0.00201000	3.03612660	0.00259534	5.66490999	-0.00211921
+450	-2.93596550E+003	0.00147000	3.03628341	0.00776041	5.66529938	0.00475448
+500	-2.93596592E+003	0.00126000	3.03647564	0.01409195	5.66619071	0.02048835
+550	-2.93596670E+003	8.700000e-004	3.03618750	0.00460118	5.66504805	3.178284e-004
+600	-2.93596763E+003	4.000000e-004	3.03615635	0.00357537	5.66508593	9.866120e-004
+650	-2.93596805E+003	1.900000e-004	3.03612602	0.00257620	5.66504379	2.426162e-004
+700	-2.93596810E+003	1.700000e-004	3.03608999	0.00138958	5.66499924	-5.436809e-004
+750	-2.93596819E+003	1.200000e-004	3.03605450	2.204934e-004	5.66497469	-9.770427e-004
+800	-2.93596843E+003	 		3.03604780			5.66503004	
+exp                                             2.9788                          5.6167  
+
+Structure validation
+====================
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %      
+Cd     2.954     2.97887     -0.8     5.525  5.61765   -1.6
+CdF2   5.410     5.381        0.5
+CdS    5.833     5.832        0.0
+CdSe   6.086     6.05         0.6
+CdTe   6.492     6.48         0.2
+
+END_COMMENT
+

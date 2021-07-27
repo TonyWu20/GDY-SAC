@@ -1,0 +1,52 @@
+CHARGE = 6                  number of valence electrons
+COARSE = 5.0                coarse energy cutoff (Ha)
+MEDIUM = 6.5                medium energy cutoff (Ha)
+FINE =   8.0                fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut           E0                delta E0          a             delta a %
+    S2      
+100	-6.00834207E+002	2.30900000	1.94958065	1.96000122
+200	-6.05333104E+002	0.05960000	1.91642000	0.22575139
+300	-6.05450175E+002	0.00110000	1.91220548	0.00533862
+400	-6.05451858E+002	2.000000e-004	1.91210644	1.589870e-004
+500	-6.05452298E+002	0.00000000	1.91210340	0
+exp                                             1.889   
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+
+        a        a exp    delta a %     c     c exp    delta c %
+BeS    4.837     4.866      -0.6     
+ZnS    5.354     5.4102     -1.0
+RbS2   7.671     7.65        0.3
+CdS    5.833     5.832       0.0
+BaS    6.347     6.3875     -0.6
+HgS    5.871     5.8517      0.3    
+WS2    3.146     3.18       -1.1     12.642   12.5        1.1
+PbS    5.897     5.9143     -0.3
+PtS    3.471     3.471       0.0      6.078    6.1084    -0.5
+
+END_COMMENT
+

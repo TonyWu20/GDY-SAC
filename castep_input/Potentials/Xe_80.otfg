@@ -1,0 +1,43 @@
+CHARGE = 8                  number of valence electrons
+COARSE = 3.0                coarse energy cutoff (Ha)
+MEDIUM = 5.0                medium energy cutoff (Ha)
+FINE = 6.0                  fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut            E0              delta E0           a             delta a %
+    Xe  
+150	-6.97471244E+002	0.01759900	7.08686156	0.94693213
+200	-6.97482647E+002	0.00619600	7.00983167	-0.15029979
+250	-6.97487389E+002	0.00145400	7.00884191	-0.16439813
+300	-6.97488357E+002	4.860000e-004	7.02461088	0.06021868
+350	-6.97488532E+002	3.110000e-004	7.02238550	0.02851990
+400	-6.97488656E+002	1.870000e-004	7.01701056	-0.04804199
+450	-6.97488721E+002	1.220000e-004	7.01868260	-0.02422513
+500	-6.97488784E+002	5.900000e-005	7.01905085	-0.01897967
+550	-6.97488822E+002	2.100000e-005	7.01888492	-0.02134326
+600	-6.97488843E+002			7.02038329	
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a % 
+XeF2  2.030     1.983       2.4 (bond length)
+                
+END_COMMENT
+

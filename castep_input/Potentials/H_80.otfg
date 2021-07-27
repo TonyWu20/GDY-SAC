@@ -1,0 +1,50 @@
+CHARGE = 1                  number of valence electrons
+COARSE = 9.0                coarse energy cutoff (Ha)
+MEDIUM = 10.0               medium energy cutoff (Ha)
+FINE =  15.0                fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 0.6           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 1          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 8.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+
+Convergence test
+================
+Ecut       Energy       	Energy Diff       Bond          Bond %
+300	-3.13969635E+001	0.17421000	0.75944269	1.21753825
+400	-3.16028989E+001	0.07125000	0.75731176	0.93353044
+500	-3.16899093E+001	0.02774000	0.75393363	0.48329730
+600	-3.17249168E+001	0.01024000	0.75170614	0.18642077
+700	-3.17382394E+001	0.00358000	0.75075501	0.05965617
+800	-3.17430467E+001	0.00117000	0.75046373	0.02083480
+900	-3.17446024E+001	3.900000e-004	0.75037797	0.00940475
+1000	-3.17450456E+001	1.700000e-004	0.75038317	0.01009724
+1100	-3.17450452E+001	1.700000e-004	0.75037424	0.00890765
+1200	-3.17450682E+001	1.600000e-004	0.75036700	0.00794172
+1300	-3.17451379E+001	1.300000e-004	0.75030855	1.523132e-004
+1400	-3.17452707E+001	6.000000e-005	0.75033825	0.00411074
+1500	-3.17453909E+001	0.00000000	0.75030741		
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp      delta a %
+LiH     3.975    4.0271    -1.3
+NaH     4.816    4.880     -1.3
+RbH     5.926    6.037     -1.8
+YH2     5.151    5.199     -0.9
+PdH     4.071    4.02       1.3
+CsH     6.270    6.376     -1.7
+
+HArF    H-Ar   H-Ar exp delta %   F-Ar F-Ar exp    delta %
+        1.374   1.33     3.3     1.961   1.97        -0.5
+
+END_COMMENT
+

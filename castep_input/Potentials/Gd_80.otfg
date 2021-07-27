@@ -1,0 +1,66 @@
+CHARGE = 18                 number of valence electrons
+COARSE = 13.0               coarse energy cutoff (Ha)
+MEDIUM = 14.7               medium energy cutoff (Ha)
+FINE =   16.5               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 5                N quantum number
+CONFIG_L : 2                L quantum number
+CONFIG_OCC : 0.0            Occupancy of the state
+CONFIG_BLOCK_END
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 3                L quantum number
+CONFIG_OCC : 0.8            Occupancy of the state
+CONFIG_BLOCK_END
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut          E0                delta E0              a         delta a %             c         delta c %
+    Gd   
+450	-6.18865708E+003	4.55359000	4.62063209	11.11009951	7.27393455	8.18547703
+500	-6.19293730E+003	2.41348000	4.33254626	4.18263923	6.97678739	3.76599718
+650	-6.19443046E+003	1.66690000	4.11552277	-1.03601960	6.65776685	-0.97880627
+700	-6.19561378E+003	1.07524000	4.12991691	-0.68989062	6.67743443	-0.68628957
+750	-6.19680695E+003	0.47865000	4.14258317	-0.38531120	6.69881858	-0.36824250
+800	-6.19776425E+003			4.15860675			6.72357765	
+               
+    
+Structure validation
+====================
+Ecut        a       delta a %               
+    GdRh                        
+440     3.459176    0.484               
+exp     3.4425                  
+
+Ecut        a       delta a %   b   delta b %   c   delta c %
+    GdSi                        
+440     8.002215    0.366       3.85961 0.042   5.776481    0.408
+exp     7.973                   3.858           5.753   
+                            
+END_COMMENT
+

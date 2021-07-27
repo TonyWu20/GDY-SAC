@@ -1,0 +1,47 @@
+CHARGE = 5                  number of valence electrons
+COARSE = 2.0                coarse energy cutoff (Ha)
+MEDIUM = 4.0                medium energy cutoff (Ha)
+FINE =   6.0                fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+P2 molecule
+
+Ecut	    Energy	        Energy Diff	    Bond	    Bond %
+100	-4.36169185E+002	0.65080000	1.91114390	0.45818255
+200	-4.37416019E+002	0.02730000	1.90393054	0.07901642
+300	-4.37469433E+002	6.000000e-004	1.90249310	0.00345821
+400	-4.37470291E+002	2.000000e-004	1.90242742	5.782090e-006
+500	-4.37470625E+002	0.00000000	1.90243095	1.913350e-004
+600	-4.37470701E+002			1.90242731	
+exp                                             1.8931
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a      a exp    delta a %     c    c exp   delta c %    b    b exp   delta b %
+AlP   5.468    5.451      0.3     
+GaP   5.437    5.450     -0.2
+InP   5.877    5.8687     0.1
+OsP2  5.094    5.1012    -0.1       2.911  2.9183   -0.3     5.887  5.9022    -0.2
+
+
+END_COMMENT
+

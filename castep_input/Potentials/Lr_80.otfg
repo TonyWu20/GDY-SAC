@@ -1,0 +1,50 @@
+CHARGE = 25                 number of valence electrons
+COARSE = 8.0                coarse energy cutoff (Ha)
+MEDIUM = 10.0               medium energy cutoff (Ha)
+FINE = 12.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.4           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing 
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+Tests on Lr2 dimer in a box
+
+Ecut		Energy	Energy Diff	Bond		Bond %
+300	-1.253452e+004	0.05340000	3.27096250	0.02452204
+350	-1.253462e+004	0.00350000	3.27026861	0.00330335
+400	-1.253462e+004	0.00270000	3.27030281	0.00434906
+450	-1.253462e+004	0.00160000	3.27029597	0.00414009
+500	-1.253462e+004	0.00140000	3.27019046	9.134670e-004
+550	-1.253462e+004	0.00120000	3.27024321	0.00252657
+600	-1.253462e+004	5.000000e-004	3.27030420	0.00439162
+650	-1.253462e+004	3.000000e-004	3.27020938	0.00149222
+700	-1.253462e+004	3.000000e-004	3.27020607	0.00139079
+750	-1.253462e+004	1.000000e-004	3.27022109	0.00185012
+800	-1.253462e+004			3.27016059	
+
+END_COMMENT
+

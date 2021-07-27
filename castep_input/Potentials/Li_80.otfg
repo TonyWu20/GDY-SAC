@@ -1,0 +1,56 @@
+CHARGE = 3                  number of valence electrons
+COARSE = 12                 coarse energy cutoff (Ha)
+MEDIUM = 15                 medium energy cutoff (Ha)
+FINE = 20                   fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 1.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 1          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut        E0          	delta E0             a           delta a %
+    Li  
+200	-1.87124818E+002	15.32603900	4.84407166	41.13221465
+300	-1.98918252E+002	3.53260500	3.99419056	16.37089612
+400	-2.01797491E+002	0.65336600	3.58934182	4.57561244
+500	-2.02353210E+002	0.09764700	3.47001579	1.09904382
+600	-2.02439959E+002	0.01089800	3.43980966	0.21898719
+700	-2.02448647E+002	0.00221000	3.43302518	0.02132099
+800	-2.02448814E+002	0.00204300	3.43163761	-0.01910589
+900	-2.02449408E+002	0.00144900	3.43189026	-0.01174498
+1000	-2.02450049E+002	8.080000e-004	3.43185218	-0.01285437
+1100	-2.02450309E+002	5.480000e-004	3.43200775	-0.00832177
+1200	-2.02450320E+002	5.370000e-004	3.43237646	0.00242072
+1300	-2.02450375E+002	4.820000e-004	3.43161128	-0.01987286
+1400	-2.02450565E+002	2.920000e-004	3.43146911	-0.02401500
+1500	-2.02450857E+002			3.43229338	
+     
+
+Structure validation
+====================
+        a        a exp       delta a %   
+Li      3.430    3.451       -0.6
+LiF     4.003    3.964        0.9
+LiCl    5.058    5.074       -0.3
+LiBr    5.406    5.445       -0.7
+LiI     5.900    5.946       -0.8
+LiH     3.975    4.0271      -1.3
+Li2O    4.576    4.573        0.1
+
+END_COMMENT
+

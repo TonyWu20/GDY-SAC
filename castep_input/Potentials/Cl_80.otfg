@@ -1,0 +1,51 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 6.0                coarse energy cutoff (Ha)
+MEDIUM = 7.0                medium energy cutoff (Ha)
+FINE =   8.5                fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+Convergence testing
+===================
+Cl2 molecule
+Ecut	     Energy	        Energy Diff	   Bond	         Bond %
+200	-8.43841932E+002	0.20300000	2.00550499	0.10665588
+300	-8.44242281E+002	0.00300000	2.00350530	0.00683948
+400	-8.44247114E+002	0.00000000	2.00339496	0.00133176
+500	-8.44247625E+002	0.00000000	2.00339324	0.00124590
+600	-8.44247860E+002	0.00000000	2.00336828	0
+exp                                             1.99
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp       delta a %    c    c exp   delta c %
+LiCl   5.058      5.074       -0.3
+NaCl   5.619      5.566        1.0
+KCl    6.236      6.288       -0.8
+CuCl   5.291      5.4057      -2.1
+RbCl   6.541      6.53         0.2     
+SrCl2  6.906      6.965       -0.8    
+SrFCl  4.084      4.126       -1.0      6.917   6.958   -0.6
+BaFCl  4.357      4.394       -0.8      7.193   7.225   -0.4
+AgCl   5.449      5.436        0.2
+CsCl   4.076      4.123       -1.1
+Hg2Cl2 4.447      4.4795      -0.7     10.900  10.9054   0.0     
+TlCl   3.766      3.834       -1.8
+
+END_COMMENT
+

@@ -1,0 +1,43 @@
+CHARGE = 8                  number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 12.0               medium energy cutoff (Ha)
+FINE = 15.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.6           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0      delta E0
+    Ar  
+Ecut	    Energy	        Energy Diff	    a	            % a
+300	-5.99647229E+002	0.02236200	6.63025657	12.35804241
+400	-5.99665716E+002	0.00387500	5.90748271	0.10972973
+500	-5.99667747E+002	0.00184400	5.90525646	0.07200313
+600	-5.99668223E+002	0.00136800	5.91037226	0.15869672
+700	-5.99668701E+002	8.900000e-004	5.90773149	0.11394553
+800	-5.99669343E+002	2.480000e-004	5.91080230	0.16598423
+900	-5.99669535E+002	5.600000e-005	5.93021652	0.49498266
+1000	-5.99669591E+002			5.90100755
+	
+Structure validation
+====================
+PBESOL, 600 eV, Ultra-Fine
+
+HArF    H-Ar   H-Ar exp delta %   F-Ar F-Ar exp    delta %
+        1.375   1.33     3.3     1.965   1.97        -0.3
+
+                    
+END_COMMENT
+

@@ -1,0 +1,52 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 9.0                coarse energy cutoff (Ha)
+MEDIUM = 10.7               medium energy cutoff (Ha)
+FINE = 12.1                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+    Mn FCC  
+Ecut     	Energy	        Energy Diff	    a	            % a
+100	-5.72240770E+002	90.40107000	3.79466905	8.47976393
+200	-6.49690709E+002	12.95113100	6.48229354	85.31199004
+300	-6.62440561E+002	0.20127900	3.51016253	0.34645921
+400	-6.62638740E+002	0.00310000	3.49874670	0.02011027
+500	-6.62640924E+002	9.160000e-004	3.49804621	8.493797e-005
+600	-6.62641326E+002	5.140000e-004	3.49801919	-6.873938e-004
+700	-6.62641514E+002	3.260000e-004	3.49804027	-8.487905e-005
+800	-6.62641767E+002	7.300000e-005	3.49804160	-4.669593e-005
+900	-6.62641798E+002	4.200000e-005	3.49803265	-3.025791e-004
+1000	-6.62641840E+002			3.49804324		
+
+Structure validation
+====================
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c     c exp   delta c %
+MnSi   4.459     4.548     -2.0
+MnO    4.365     4.445     -1.8      
+MnB4   5.429     5.503     -1.3       2.924   2.949     -0.8
+
+END_COMMENT
+

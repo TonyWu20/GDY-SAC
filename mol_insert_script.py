@@ -14,18 +14,18 @@ class Scriptor(conf.ModelFactory):
     """
     Write perl script for adsorbate insertion
     """
-    def write_perl(self, lines: List[str], outdir: Path):
+    def write_perl(self, lines: List[str], outdir: Path, site: str):
         """
         Write the perl script to use
         Args:
             lines: List of formatted lines
         """
-        with open("perl_repo/MS_head.pl", 'r') as file:
-            headlines = file.readlines()
+        headlines = [
+            '#!perl\n', 'use strict;\n', 'use Getopt::Long;\n',
+            'use MaterialsScript qw(:all);\n'
+        ]
         array_lines = ['my @params = (\n'] + lines + [');\n']
-        adsorbate = self.mol.filepath.stem
-        with open(f"perl_repo/{adsorbate}_insert.pl", 'r') as file:
-            operations = file.readlines()
+        operations = self.build_actions(site)
         text = headlines + array_lines + operations
         with open(f"{outdir}/generate_model.pl", 'w') as output:
             output.writelines(text)
@@ -34,14 +34,15 @@ class Scriptor(conf.ModelFactory):
         """
         Output scripts by directory
         """
-        outdir = Path(lat_dir.name + f"_{self.mol.filepath.stem}/{site}")
+        outdir = Path(self.mol.dest + f"_{lat_dir.name}/" + lat_dir.name +
+                      f"_{self.mol.filepath.stem}/{site}")
         if not outdir.exists():
             outdir.mkdir(parents=True)
         files = [item for item in lat_dir.iterdir() if 'xsd' in item.name]
         files.sort()
         setup = partial(self.adsorbate_setup, site=site)
         res = p_map(setup, files)
-        self.write_perl(res, outdir)
+        self.write_perl(res, outdir, site)
 
 
 def main(use_mol: str, lat_dir: str, mol_z: float = 1.54221):
@@ -62,5 +63,20 @@ def main(use_mol: str, lat_dir: str, mol_z: float = 1.54221):
     print("Done")
 
 
+def all_molecules(lat_dir: str, mol_z: float = 1.54221):
+    """
+    Generate perl scripts for all molecules
+    """
+    root = Path.cwd()
+    dirs = [item for item in root.rglob(lat_dir) if item.is_dir()]
+    sites = ['metal', 'c1', 'c2', 'c3', 'c4', 'c5']
+    mol_files = list(root.rglob("graphdiyne/molecules_models/**/*.msi"))
+    for mol in mol_files:
+        scriptor = Scriptor(mol, mol_z)
+        for dir_path in dirs:
+            for site in sites:
+                scriptor.generate_scripts(dir_path, site)
+
+
 if __name__ == "__main__":
-    Fire(main)
+    Fire(all_molecules)

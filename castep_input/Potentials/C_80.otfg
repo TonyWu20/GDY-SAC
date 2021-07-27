@@ -1,0 +1,53 @@
+CHARGE = 4                  number of valence electrons
+COARSE = 11.0               coarse energy cutoff (Ha)
+MEDIUM = 12.0               medium energy cutoff (Ha)
+FINE = 14.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.4           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence test (diamond)
+==========================
+Ecut        Etot                   dEtot          a                da/a (%)
+200	-3.09994045E+002	2.64654000	3.92896144	10.03707902
+300	-3.14446829E+002	0.42015000	3.57625890	0.15905953
+400	-3.15117685E+002	0.08472000	3.57013471	-0.01245854
+500	-3.15270374E+002	0.00838000	3.57208113	0.04205415
+600	-3.15286139E+002	5.000000e-004	3.57066315	0.00234140
+700	-3.15287032E+002	5.000000e-005	3.57058349	1.104216e-004
+800	-3.15287059E+002	4.000000e-005	3.57058081	3.519314e-005
+900	-3.15287084E+002	2.000000e-005	3.57058113	4.431416e-005
+1000	-3.15287097E+002	2.000000e-005	3.57058034	2.214821e-005
+1100	-3.15287111E+002	1.000000e-005	3.57057996	1.147773e-005
+1200	-3.15287124E+002	0.00000000	3.57057978	6.346782e-006
+1300	-3.15287130E+002	0.00000000	3.57057980	6.853397e-006
+1400	-3.15287131E+002	0.00000000	3.57057976	5.901046e-006
+1500	-3.15287133E+002	         	3.57057955	
+exp                                             3.556
+
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %
+C      3.554     3.556      0.0
+TiC    4.292     4.319     -0.6
+VC     4.117     4.165     -1.2
+ZrC    4.666     4.683     -0.3  
+WC     2.900     2.90423   -0.1      2.827   2.83525   -0.3
+TaC    4.440     4.454     -0.3 
+
+END_COMMENT
+

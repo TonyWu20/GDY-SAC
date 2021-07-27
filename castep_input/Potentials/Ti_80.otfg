@@ -1,0 +1,85 @@
+CHARGE = 12                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 12.0               medium energy cutoff (Ha)
+FINE = 14.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.5             Qc value (used only by qc, qb, and es schemes)
+
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut           E0                 delta E0        a              delta a %           c           delta c %
+    Ti 
+200	-3.14361005E+003	22.03723000	5.65236995	92.13776056	5.71536623	23.39308239
+300	-3.18668134E+003	0.50159000	2.99645856	1.85689234	4.72372341	1.98380447
+400	-3.18767421E+003	0.00515000	2.94313087	0.04415502	4.63460148	0.05968796
+500	-3.18768059E+003	0.00196000	2.94185501	7.852527e-004	4.63176305	-0.00159291
+600	-3.18768177E+003	0.00137000	2.94180663	-8.592656e-004	4.63176499	-0.00155107
+700	-3.18768268E+003	9.200000e-004	2.94182593	-2.030960e-004	4.63167396	-0.00351638
+800	-3.18768375E+003	3.800000e-004	2.94176067	-0.00242162	4.63183581	-2.195326e-005
+900	-3.18768420E+003	1.600000e-004	2.94183309	4.032520e-005	4.63176104	-0.00163614
+1000	-3.18768451E+003			2.94183191			4.63183683	
+exp                                             2.9506                          4.6788  
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %
+Ti     2.903     2.9506     -1.6      4.574  4.6788   -2.2
+TiC    4.292     4.319      -0.6
+TiN    4.203     4.238      -0.8
+TiB2   3.018     3.0236     -0.2      3.181  3.2204   -1.2
+SrTiO3 3.891     3.898      -0.2 
+    
+END_COMMENT
+

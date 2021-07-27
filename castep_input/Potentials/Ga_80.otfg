@@ -1,0 +1,56 @@
+CHARGE = 13                 number of valence electrons
+COARSE = 13.0               coarse energy cutoff (Ha)
+MEDIUM = 14.0               medium energy cutoff (Ha)
+FINE = 15.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ga2 in a cell (line)
+Ecut    	Energy	        Energy Diff
+200	-4.23833453E+003	27.99483000
+250	-4.28250040E+003	5.91189000
+300	-4.29182785E+003	1.24817000
+350	-4.29384449E+003	0.23985000
+400	-4.29415052E+003	0.08683000
+450	-4.29421528E+003	0.05445000
+500	-4.29432376E+003	2.100000e-004
+550	-4.29432390E+003	1.400000e-004
+600	-4.29422172E+003	0.05123000
+650	-4.29432405E+003	7.000000e-005
+700	-4.29432406E+003	6.000000e-005
+750	-4.29432410E+003	4.000000e-005
+800	-4.29432418E+003	
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %  
+GaAs   5.660     5.638     0.4
+GaN    4.500     4.52     -0.4
+GaP    5.437     5.450    -0.2
+GaSb   6.110     6.118    -0.1
+
+END_COMMENT
+

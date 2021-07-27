@@ -1,0 +1,85 @@
+CHARGE = 10                 number of valence electrons
+COARSE = 4.0                coarse energy cutoff (Ha)
+MEDIUM = 5.5                medium energy cutoff (Ha)
+FINE = 7.0                  fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.5             Qc value (used only by qc, qb, and es schemes)
+
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+BETA_RADIUS = 2.3           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 4.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut           E0                 delta E0        a              delta a %
+    Ba          
+150	-1.02819724E+003	0.07128000	5.11115247	1.58941558
+200	-1.02824174E+003	0.02678000	5.03060815	-0.01148566
+250	-1.02825676E+003	0.01176000	5.03275879	0.03126050
+300	-1.02826525E+003	0.00327000	5.03267752	0.02964504
+350	-1.02826728E+003	0.00124000	5.03124977	0.00126723
+400	-1.02826769E+003	8.300000e-004	5.03101522	-0.00339472
+450	-1.02826796E+003	5.600000e-004	5.03145404	0.00532725
+500	-1.02826820E+003	3.200000e-004	5.03143932	0.00503464
+550	-1.02826838E+003	1.400000e-004	5.03128574	0.00198214
+600	-1.02826852E+003			5.03118602	
+exp                                             4.994
+
+Structure validation
+====================
+
+PBESOL, 600 eV, Ultra-Fine
+        a        a exp    delta a %     c    c exp   delta c %      
+Ba     4.892     4.994      -2.0  
+BaF2   6.168     6.1964     -0.5
+BaFBr  4.473     4.508      -0.8       7.412  7.441    -0.4
+BaFCl  4.357     4.394      -0.8       7.193  7.225    -0.4
+BaFI   4.612     4.654      -0.9       7.915  7.962    -0.6
+BaO    5.519     5.523      -0.1
+BaS    6.347     6.3875     -0.6
+BaSe   6.563     6.6        -0.6
+BaTe   6.953     6.986      -0.5
+
+END_COMMENT
+

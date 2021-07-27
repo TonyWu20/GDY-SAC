@@ -1,0 +1,63 @@
+CHARGE = 17                 number of valence electrons
+COARSE = 13.0               coarse energy cutoff (Ha)
+MEDIUM = 14.0               medium energy cutoff (Ha)
+FINE = 17.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut           E0                 delta E0           a              delta a %          c          delta c %
+    Am              
+400	-1.01549484E+004	0.81560000	3.81986908	3.77956382	12.41273609	3.62405615
+450	-1.01557086E+004	0.05540000	3.69661786	0.43103088	12.03269233	0.45137318
+500	-1.01557547E+004	0.00930000	3.68174927	0.02707556	11.98208006	0.02885158
+550	-1.01557565E+004	0.00750000	3.68062128	-0.00357013	11.97830142	-0.00269324
+600	-1.01557602E+004	0.00380000	3.68081453	0.00168024	11.97891322	0.00241418
+650	-1.01557623E+004	0.00170000	3.68074760	-1.379870e-004	11.97865909	2.926533e-004
+700	-1.01557627E+004	0.00130000	3.68069741	-0.00150159	11.97851558	-9.054043e-004
+750	-1.01557631E+004	9.000000e-004	3.68068403	-0.00186533	11.97848549	-0.00115655
+800	-1.01557640E+004			3.68075268			11.97862403	
+
+Structure validation
+====================
+Ecut        a       delta a %
+    AmO     
+610     3.597151    0.735
+exp     3.570889    
+        
+Ecut        a       delta a %
+    AmO2        
+610     3.834931    0.882
+exp     3.801406    
+    
+Ecut        a       delta a %   b   delta b %       c       delta c %  beta delta beta %
+    AmI2                                
+560     7.776375    1.294       8.200837    -1.326  7.991636    0.841   99.549062   1.106
+exp     7.677                   8.311               7.925               98.46   
+            
+END_COMMENT
+
