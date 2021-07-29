@@ -8,7 +8,7 @@ from collections import Counter
 import numpy as np
 import sympy as sp
 from mendeleev import element
-from castep_input.msicell import msiLattice
+from graphdiyne.msi_lattice import MsiLattice
 
 
 class Molecule:
@@ -71,23 +71,47 @@ class ModelFactory:
     """
     Assemble one molecule to many lattice models
     """
-    def __init__(self, use_mol: Path, mol_height):
+    def __init__(self, use_mol: Path, mol_height, lattices_dir: Path,
+                 site: str):
         """
         Init factory by feeding the target molecule
         """
         self.mol = Molecule(use_mol)
         self.mol_height = mol_height
+        self.site = site
+        self.outdir = Path(self.mol.dest + f"_{lattices_dir.name}/" +
+                           lattices_dir.name +
+                           f"_{self.mol.filepath.stem}/{site}")
+        if not self.outdir.exists():
+            self.outdir.mkdir(parents=True)
 
-    def feed_lattice(self, use_lattice: Path, site: str) -> np.ndarray:
+    @classmethod
+    def build_atom(cls, atom_elm: str, atom_xyz: np.ndarray,
+                   atom_id: int) -> str:
+        """
+        Construct atom blocks in .msi file
+        """
+        current_id = 73 + atom_id + 1
+        atomic_number = element(atom_elm).atomic_number
+        acl_prop = f"{atomic_number} {atom_elm}"
+        xyz_string = " ".join([f"{item:.12}" for item in atom_xyz])
+        atom = (f'  ({current_id+1} Atom\n'
+                f'    (A C ACL "{acl_prop}")\n'
+                f'    (A C Label "{atom_elm}")\n'
+                f'    (A D XYZ ({xyz_string}))\n'
+                f'    (A I Id {current_id})\n  )\n')
+        return atom
+
+    def place_mol(self, use_lattice: Path) -> np.ndarray:
         """
         Place the target molecule to input lattices
         Args:
             use_lattice (Path): path of the target lattice
-            mol_height (float): height of the molecule
+            site (str): adsorption site
         returns:
             output (np.ndarray): arrays of the molecule atoms coordinates
         """
-        lattice = msiLattice(use_lattice)
+        lattice = MsiLattice(use_lattice)
         ads_pos = {
             "metal": lattice.metal_xyz,
             "c1": lattice.carbon_coords["c1"],
@@ -99,21 +123,27 @@ class ModelFactory:
         push_height = np.array([0, 0, self.mol_height])
         mole_coord = np.dot(self.mol.coordinates + push_height,
                             lattice.rotation_vector)
-        implanted_coord: np.ndarray = mole_coord + ads_pos[site]
+        implanted_coord: np.ndarray = mole_coord + ads_pos[self.site]
         return implanted_coord
 
-    def build_atom(self, atom_elm: str, atom_xyz: np.ndarray,
-                   atom_id: int) -> str:
+    def assemble_mol(self, use_lattice: Path):
         """
-        Construct atom blocks in .msi file
+        Generate new .msi file with adsorbate
+        Args:
+            use_lattice (Path): path of the target lattice
+            site (str): adsorption site
         """
-        current_id = 73 + atom_id
-        atomic_number = element(atom_elm).atomic_number
-        acl_prop = f"{atomic_number} {atom_elm}"
-        xyz_string = " ".join([f"{item:.12}" for item in atom_xyz])
-        atom = (f'  ({current_id+1} Atom\n'
-                f'    (A C ACL "{acl_prop}")\n'
-                f'    (A C Label "{atom_elm}")\n'
-                f'    (A D XYZ ({xyz_string}))\n'
-                f'    (A I Id {current_id})\n  )\n')
-        return atom
+        lattice = MsiLattice(use_lattice)
+        adsorbate_atoms = [
+            self.build_atom(elm, coord, use_id) for elm, coord, use_id in zip(
+                self.mol.elements, self.place_mol(use_lattice),
+                range(len(self.mol.elements)))
+        ]
+        all_atoms = ''.join(lattice.current_atoms + adsorbate_atoms)
+        head, end = lattice.head_end_lines
+        contents = head + all_atoms + end
+        filename = "_".join([
+            lattice.filepath.stem, self.mol.filepath.stem, self.site
+        ]) + ".msi"
+        with open(self.outdir / filename, 'w') as output:
+            output.write(contents)

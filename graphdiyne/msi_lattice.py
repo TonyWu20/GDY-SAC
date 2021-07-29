@@ -2,7 +2,7 @@
 .msi file based model creation
 """
 import re
-from typing import Dict, List
+from typing import Dict, List, Tuple
 from pathlib import Path
 import numpy as np
 import yaml as y
@@ -10,7 +10,7 @@ import dpath.util as dp
 from mendeleev import element
 
 
-class msiLattice:
+class MsiLattice:
     """
     Object of lattice model
     """
@@ -150,3 +150,13 @@ class msiLattice:
         cos, sin = np.cos(theta), np.sin(theta)
         rot_matrix = np.array([[cos, -sin, 0], [sin, cos, 0], [0, 0, 1]])
         return rot_matrix
+
+    @property
+    def head_end_lines(self) -> Tuple[str, str]:
+        """
+        The header and ending lines in .msi files with atom information only
+        """
+        block_atoms = re.compile(r'^  \([0-9]+.*\n.*\n.*\n.*\n.*\n.*\)\n',
+                                 re.MULTILINE)
+        head, end = list(filter(None, block_atoms.split(self.text)))
+        return head, end
