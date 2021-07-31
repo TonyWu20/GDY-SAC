@@ -92,7 +92,8 @@ class ModelFactory:
         Construct atom blocks in .msi file
         """
         current_id = 73 + atom_id + 1
-        atomic_number = element(atom_elm).atomic_number
+        atomic_number = 0 if atom_elm == "H" else element(
+            atom_elm).atomic_number
         acl_prop = f"{atomic_number} {atom_elm}"
         xyz_string = " ".join([f"{item:.12}" for item in atom_xyz])
         atom = (f'  ({current_id+1} Atom\n'
