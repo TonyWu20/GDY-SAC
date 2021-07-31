@@ -19,7 +19,7 @@ mix_spin_amp :        2.000000000000000
 mix_charge_gmax :        1.500000000000000
 mix_spin_gmax :        1.500000000000000
 mix_history_length :       20
-perc_extra_bands: 72
+perc_extra_bands : 72
 smearing_width :        0.100000000000000
 spin_fix :        6
 num_dump_cycles : 0
