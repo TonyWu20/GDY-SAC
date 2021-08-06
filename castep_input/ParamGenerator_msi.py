@@ -5,10 +5,10 @@ import re
 from pathlib import Path
 import shutil
 import dpath.util as dp
-from castep_input.CellGenerator import GDYLattice
+from graphdiyne.msi_lattice import MsiLattice
 
 
-class ParamFile(GDYLattice):
+class ParamFile(MsiLattice):
     """
     Class of .param file
     """
@@ -31,11 +31,14 @@ class ParamFile(GDYLattice):
         (1.1 times of FINE)
         """
         pot_files = self.get_potentials()
-        fine_energy = re.compile(r"([0-9]+) FINE")
-        cutoff_vals = [
-            int(fine_energy.search(item.read_text()).group(1))
-            for item in pot_files
-        ]
+        fine_energy = re.compile(r"([0-9]+)\s+FINE")
+        try:
+            cutoff_vals = [
+                int(fine_energy.search(item.read_text()).group(1))
+                for item in pot_files
+            ]
+        except AttributeError:
+            print(self.metal)
 
         def roundup_tenth(number: float):
             """
@@ -85,7 +88,7 @@ class ParamFile(GDYLattice):
         spin_pat = re.compile(r"(?<=spin :\s{8})([0-9]+)")
         sub_cutoff = cutoff_pat.sub(self.cutoff_energy, text)
         sub_spin = spin_pat.sub(str(self.spin), sub_cutoff)
-        with open(self.param_filename, 'w', 60000, newline='\r\n') as file:
+        with open(self.param_filename, 'w', newline='\r\n') as file:
             file.write(sub_spin)
 
     def write_dos_param(self):
@@ -98,7 +101,7 @@ class ParamFile(GDYLattice):
         spin_pat = re.compile(r"(?<=spin :\s{8})([0-9]+)")
         sub_cutoff = cutoff_pat.sub(self.cutoff_energy, text)
         sub_spin = spin_pat.sub(str(self.spin), sub_cutoff)
-        with open(self.dos_param_filename, 'w', 60000, newline='\r\n') as file:
+        with open(self.dos_param_filename, 'w', newline='\r\n') as file:
             file.write(sub_spin)
 
     def copy_potentials(self):
@@ -120,11 +123,11 @@ class ParamFile(GDYLattice):
         eof = "rm ./hostfile"
         template = Path("castep_input/pbs_template.sh")
         contents = template.read_text() + cmd + eof
-        with open(self.castep_dir / "hpc.pbs.sh", 'w', 60000, newline='\r\n') as file:
+        with open(self.castep_dir / "hpc.pbs.sh", 'w', newline='\r\n') as file:
             file.write(contents)
 
 
-class MiscFile(GDYLattice):
+class MiscFile(MsiLattice):
     """
     Misc files generations.
     """
@@ -141,9 +144,9 @@ class MiscFile(GDYLattice):
                    "%ENDBLOCK KPOINT_IMAGES")
         filepath = self.castep_dir / f"{self.filepath.stem}.kptaux"
         dos_filepath = self.castep_dir / f"{self.filepath.stem}_DOS.kptaux"
-        with open(filepath, 'w', 60000, newline='\r\n') as file:
+        with open(filepath, 'w', newline='\r\n') as file:
             file.write(content)
-        with open(dos_filepath, 'w', 60000, newline='\r\n') as file:
+        with open(dos_filepath, 'w', newline='\r\n') as file:
             file.write(content)
 
     def write_trjaux(self):
@@ -162,7 +165,7 @@ class MiscFile(GDYLattice):
                         "0.000000000000000e+000  0.000000000000000e+000")
         contents = [start_comments] + atom_ids_lines + [end_comments]
         filepath = self.castep_dir / f"{self.filepath.stem}.trjaux"
-        with open(filepath, 'w', 60000, newline='\r\n') as file:
+        with open(filepath, 'w', newline='\r\n') as file:
             file.writelines(contents)
 
     def copy_smcastep(self):
@@ -177,9 +180,9 @@ class MiscFile(GDYLattice):
         """
         Move structure files into castep folder
         """
-        xsd_file = self.filepath
-        new_dest = self.castep_dir / xsd_file.name
-        xsd_file.rename(new_dest)
-        msi_file = self.filepath.parent / f"{self.filepath.stem}.msi"
-        new_msi_dest = self.castep_dir / msi_file.name
-        msi_file.rename(new_msi_dest)
+        msi_file = self.filepath
+        new_dest = self.castep_dir / msi_file.name
+        msi_file.rename(new_dest)
+        xsd_file = self.filepath.parent / f"{self.filepath.stem}.xsd"
+        new_xsd_dest = self.castep_dir / xsd_file.name
+        xsd_file.rename(new_xsd_dest)

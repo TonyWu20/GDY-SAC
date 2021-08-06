@@ -324,7 +324,7 @@ class CellFile(GDYLattice):
             self.block_pot(),
             self.block_LCAO()
         ]
-        with open(cellfile, 'w', newline='\r\n') as file:
+        with open(cellfile, 'w', 60000, newline='\r\n') as file:
             for item in contents:
                 file.writelines(item)
 
@@ -373,6 +373,6 @@ class DOSCellFile(CellFile):
             self.block_pot(),
             self.block_LCAO()
         ]
-        with open(cellfile, 'w', newline='\r\n') as file:
+        with open(cellfile, 'w', 60000, newline='\r\n') as file:
             for item in contents:
                 file.writelines(item)

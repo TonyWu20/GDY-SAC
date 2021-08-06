@@ -13,30 +13,30 @@ Files:
 from pathlib import Path
 from p_tqdm import p_map
 from fire import Fire
-from castep_input.CellGenerator import CellFile, DOSCellFile
-from castep_input.ParamGenerator import ParamFile, MiscFile
+from castep_input.CellGenerator_msi import CellFile, DOSCellFile
+from castep_input.ParamGenerator_msi import ParamFile, MiscFile
 
 
-def generate_cell(xsd_path: Path):
+def generate_cell(msi_path: Path):
     """
     Generate .cell and dos.cell file for CASTEP input
     Args:
         xsd_path (Path): Path object of xsd file
     """
-    cell = CellFile(xsd_path)
-    cell_DOS = DOSCellFile(xsd_path)
+    cell = CellFile(msi_path)
+    cell_DOS = DOSCellFile(msi_path)
     cell.write_cell()
     cell_DOS.write_cell()
 
 
-def generate_param(xsd_path: Path):
+def generate_param(msi_path: Path):
     """
     Generate .param and dos.param for CASTEP input
     Args:
         xsd_path (Path): Path object of xsd file
     """
-    param = ParamFile(xsd_path)
-    misc = MiscFile(xsd_path)
+    param = ParamFile(msi_path)
+    misc = MiscFile(msi_path)
     param.write_param()
     param.write_dos_param()
     param.copy_potentials()
@@ -47,12 +47,12 @@ def generate_param(xsd_path: Path):
     misc.move_structures()
 
 
-def main(xsd_pattern: str):
+def main(msi_pattern: str):
     """
     Main function to execute
     """
     root = Path.cwd()
-    files = list(root.rglob(xsd_pattern))
+    files = list(root.rglob(msi_pattern))
     p_map(generate_cell, files)
     p_map(generate_param, files)
 
