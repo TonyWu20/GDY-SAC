@@ -1,3 +1,67 @@
+ads:
+  C:
+    LCAO: 2
+    mass: 12.0109996796
+    pot: C_00PBE.usp
+  H:
+    LCAO: 1
+    mass: 1.0080000162
+    pot: H_00PBE.usp
+  O:
+    LCAO: 2
+    mass: 15.9989995956
+    pot: O_00PBE.usp
+3d:
+  Co:
+    LCAO: 3
+    mass: 58.9329986572
+    pot: Co_00PBE.uspcc
+    spin: 3
+  Cr:
+    LCAO: 5
+    mass: 51.9959983826
+    pot: Cr_00PBE.usp
+    spin: 3
+  Cu:
+    LCAO: 3
+    mass: 63.5460014343
+    pot: Cu_00PBE.usp
+    spin: 1
+  Fe:
+    LCAO: 3
+    mass: 55.8470001221
+    pot: Fe_00PBE.uspcc
+    spin: 4
+  Mn:
+    LCAO: 3
+    mass: 54.9379997253
+    pot: Mn_00PBE.uspcc
+    spin: 5
+  Ni:
+    LCAO: 3
+    mass: 58.7099990845
+    pot: Ni_00PBE.uspcc
+    spin: 2
+  Sc:
+    LCAO: 5
+    mass: 44.9560012817
+    pot: Sc_00PBE.usp
+    spin: 0
+  Ti:
+    LCAO: 5
+    mass: 47.9000015259
+    pot: Ti_00PBE.usp
+    spin: 0
+  V:
+    LCAO: 5
+    mass: 50.9410018921
+    pot: V_00PBE.usp
+    spin: 2
+  Zn:
+    LCAO: 4
+    mass: 65.3799972534
+    pot: Zn_00PBE.usp
+    spin: 0
 4d:
   Ag:
     LCAO: 3
@@ -95,19 +159,6 @@
     mass: 183.8500061035
     pot: W_00PBE.usp
     spin: 2
-ads:
-  C:
-    LCAO: 2
-    mass: 12.0109996796
-    pot: C_00PBE.usp
-  H:
-    LCAO: 1
-    mass: 1.0080000162
-    pot: H_00PBE.usp
-  O:
-    LCAO: 2
-    mass: 15.9989995956
-    pot: O_00PBE.usp
 lm:
   Ce:
     LCAO: 6
