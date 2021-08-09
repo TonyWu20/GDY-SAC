@@ -135,4 +135,5 @@ GDY_SAC_models
 CO2RR*
 *.pl
 *.msi
+!msi_models/**/*.msi
 *.xsd
