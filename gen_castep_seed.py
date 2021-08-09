@@ -13,8 +13,8 @@ Files:
 from pathlib import Path
 from p_tqdm import p_map
 from fire import Fire
-from castep_input.CellGenerator_msi import CellFile, DOSCellFile
-from castep_input.ParamGenerator_msi import ParamFile, MiscFile
+from castep_input.CellGenerator import CellFile, DOSCellFile
+from castep_input.ParamGenerator import ParamFile, MiscFile
 
 
 def generate_cell(msi_path: Path):

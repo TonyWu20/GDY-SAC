@@ -2,7 +2,6 @@
 Prepare molecule insertion information to write MS perl script
 """
 from pathlib import Path
-from functools import partial
 from p_tqdm import p_map
 from fire import Fire
 from graphdiyne import msi_assemble
