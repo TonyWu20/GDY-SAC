@@ -22,8 +22,12 @@ def main(use_mol: str, lat_dir_pattern: str, mol_z: float = 1.54221):
     execute_arrays = [(mol, lat, site) for mol in mol_files for site in sites
                       for lat in lattice_dir]
 
+    # / Generate all possible combinations among adsorbates, base lattices and
+    # / adsorption sites /
+
     def gen_msi(conf):
         mol_file, lat_dir, site = conf
+        #Unpack variable. Single variable for ease of calling p_map()
         factory = msi_assemble.ModelFactory(mol_file, mol_z, lat_dir, site)
         files = list(lat_dir.rglob('*.msi'))
         for file in files:
