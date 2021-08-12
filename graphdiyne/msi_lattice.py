@@ -341,9 +341,8 @@ class MsiLattice:
         """
         Format atom xyz with element information into a line of strings
         """
-        new_str = [f"{val:.16f}" for val in xyz_item]
         # 16 decimal digits
-        align_str = [f"{val:>19}" for val in new_str]
+        align_str = [f"{val:>19.16f}" for val in xyz_item]
         # Right align strings
         formatted_xyz = "  ".join(align_str)
         if elm == self.metal and self.spin != 0:
