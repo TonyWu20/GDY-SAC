@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import yaml as y
 import dpath.util as dp
-from mendeleev import element
+import periodictable as pdtable
 
 
 class MsiLattice:
@@ -152,8 +152,7 @@ class MsiLattice:
                 arr : vector in array form
             """
             values = vec_str.split(' ')
-            new_str = [f"{float(value):.15f}" for value in values]
-            align_str = [f"{value:>18}" for value in new_str]
+            align_str = [f"{float(value):>18.15f}" for value in values]
             line = "      ".join(align_str)
             return line
 
@@ -230,9 +229,10 @@ class MsiLattice:
         Return existing elements, sorted by atomic number
         """
         atom_re = self.atom_re_pat()
-        elements = set(item.group(2) for item in atom_re.finditer(self.text))
-        sorted_elements = sorted(list(elements),
-                                 key=lambda x: element(x).atomic_number)
+        element_set = set(
+            item.group(2) for item in atom_re.finditer(self.text))
+        sorted_elements = sorted(
+            list(element_set), key=lambda x: pdtable.elements.symbol(x).number)
         return sorted_elements
 
     @property
@@ -245,8 +245,7 @@ class MsiLattice:
         elements = self.elements
         aligned_elements = [f"      {item:>2}" for item in elements]
         masses = [dp.get(self.table, f'*/{elm}')['mass'] for elm in elements]
-        masses = [f"{float(item):.10f}" for item in masses]
-        aligned_masses = [f"{item:>15}\n" for item in masses]
+        aligned_masses = [f"{float(item):>15.10f}\n" for item in masses]
         mass_lines = [
             elm + "   " + mass
             for elm, mass in zip(aligned_elements, aligned_masses)

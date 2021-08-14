@@ -13,7 +13,7 @@ Files:
 from pathlib import Path
 from p_tqdm import p_map
 from fire import Fire
-from castep_input.CellGenerator import CellFile, DOSCellFile
+from castep_input.CellGenerator import CellFile
 from castep_input.ParamGenerator import ParamFile, MiscFile
 
 
@@ -24,9 +24,7 @@ def generate_cell(msi_path: Path):
         xsd_path (Path): Path object of xsd file
     """
     cell = CellFile(msi_path)
-    cell_DOS = DOSCellFile(msi_path)
     cell.write_cell()
-    cell_DOS.write_cell()
 
 
 def generate_param(msi_path: Path):

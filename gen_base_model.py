@@ -1,13 +1,16 @@
+"""
+Substitute metal elements in the base model to generate series of models.
+"""
 from typing import List
 from pathlib import Path
 from functools import partial
 import xml.etree.ElementTree as ET
-from mendeleev import element
+import periodictable as pdtable
 from p_tqdm import p_map
 from fire import Fire
 
 
-def get_symbols(index: List[int]) -> List[str]:
+def get_symbols(index_range: range) -> List[str]:
     """
     Get element symbols by atomic numbers
     Args:
@@ -15,8 +18,7 @@ def get_symbols(index: List[int]) -> List[str]:
     returns:
         symbols (list): list of element symbol strings
     """
-    elm = element(index)
-    symbols = [item.symbol for item in elm]
+    symbols = [pdtable.elements[i].symbol for i in index_range]
     return symbols
 
 
@@ -64,10 +66,10 @@ def main(base_name: str):
     """
     Main execution
     """
-    d3 = get_symbols(list(range(21, 31)))
-    d4 = get_symbols(list(range(39, 49)))
-    d5 = get_symbols(list(range(72, 81)))
-    lm = get_symbols(list(range(57, 72)))
+    d3 = get_symbols(range(21, 31))
+    d4 = get_symbols(range(39, 49))
+    d5 = get_symbols(range(72, 81))
+    lm = get_symbols(range(57, 72))
     elements = {'3d': d3, '4d': d4, '5d': d5, 'lm': lm}
     root = Path.cwd()
     base_file = next(root.rglob(base_name))

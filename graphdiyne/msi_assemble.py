@@ -7,7 +7,7 @@ from typing import Tuple, Dict, List
 from collections import Counter
 import numpy as np
 import sympy as sp
-from mendeleev import element
+import periodictable as pdtable
 from graphdiyne.msi_lattice import MsiLattice
 
 
@@ -92,8 +92,8 @@ class ModelFactory:
         Construct atom blocks in .msi file
         """
         current_id = 73 + atom_id + 1
-        atomic_number = 0 if atom_elm == "H" else element(
-            atom_elm).atomic_number
+        atomic_number = 0 if atom_elm == "H" else pdtable.elements.symbol(
+            atom_elm).number
         acl_prop = f"{atomic_number} {atom_elm}"
         xyz_string = " ".join([f"{item:.12}" for item in atom_xyz])
         atom = (f'  ({current_id+1} Atom\n'

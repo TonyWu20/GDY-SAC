@@ -3,7 +3,7 @@ Get necessary element informations from .cell file and tabulate
 """
 import re
 from pathlib import Path
-from mendeleev import element
+import periodictable as pdtable
 import yaml as y
 from fire import Fire
 
@@ -88,8 +88,8 @@ def main(dir_name: str):
     cell_files = [item for item in cell_files if not "DOS" in item.stem]
     cell_files = sorted(
         cell_files,
-        key=lambda x: element(x.stem.split("_")[2]).  #type:ignore
-        atomic_number)
+        key=lambda x: pdtable.elements.symbol(  #type:ignore
+            x.stem.split("_")[2]).number)
     output_dicts = [CellFile(item).output_res() for item in cell_files]
     out_dict = {}
     for item in output_dicts:

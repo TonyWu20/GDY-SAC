@@ -125,31 +125,7 @@ class CellFile(MsiLattice):
         lcao_block = self.write_block("SPECIES_LCAO_STATES", lcao_lines)
         return lcao_block
 
-    def write_cell(self):
-        """
-        Write blocks to .cell file
-        """
-        stem = self.filepath.stem
-        cellfile = self.castep_dir / f"{stem}.cell"
-        contents = [
-            self.block_lattice(),
-            self.block_frac(),
-            self.block_misc(),
-            self.block_masses(),
-            self.block_pot(),
-            self.block_LCAO()
-        ]
-        text = ''.join((item for block in contents for item in block))
-        del contents
-        with open(cellfile, 'w', newline='\r\n') as file:
-            file.write(text)
-
-
-class DOSCellFile(CellFile):
-    """
-    *DOS.cell file. Subclass of CellFile.
-    """
-    def block_misc(self) -> List[str]:
+    def block_dos_misc(self) -> List[str]:
         """
         Write common settings in .cell
         returns:
@@ -180,7 +156,7 @@ class DOSCellFile(CellFile):
         Write blocks to .cell file
         """
         stem = self.filepath.stem
-        cellfile = self.castep_dir / f"{stem}_DOS.cell"
+        cellfile = self.castep_dir / f"{stem}.cell"
         contents = [
             self.block_lattice(),
             self.block_frac(),
@@ -190,6 +166,10 @@ class DOSCellFile(CellFile):
             self.block_LCAO()
         ]
         text = ''.join((item for block in contents for item in block))
-        del contents
         with open(cellfile, 'w', newline='\r\n') as file:
+            file.write(text)
+        contents[2] = self.block_dos_misc()
+        text = ''.join((item for block in contents for item in block))
+        dos_cellfile = self.castep_dir / f"{stem}_DOS.cell"
+        with open(dos_cellfile, 'w', newline='\r\n') as file:
             file.write(text)
