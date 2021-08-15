@@ -56,7 +56,7 @@ class MsiLattice:
                 r'.*ACL "([0-9a-zA-Z ]+)"\)\n'
                 r'.*Label "([a-zA-Z]+)"\)\n'
                 r'.*XYZ \(([0-9 e.-]+)\).*\n.*'
-                f'Id ([0-9]+)'
+                r'Id ([0-9]+)'
                 r'.*\n.*\)\n')
         atom_re = re.compile(atom, re.MULTILINE)
         return atom_re

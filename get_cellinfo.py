@@ -24,7 +24,7 @@ class CellFile:
         """
         metal_line_re = re.compile(f"{self.metal}.*")
         matched_line = metal_line_re.search(self.text).group(0)
-        if not "SPIN" in matched_line:
+        if "SPIN" not in matched_line:
             spin = 0
         else:
             spin_re = re.compile("SPIN=  ([0-9.]+)")
@@ -37,7 +37,7 @@ class CellFile:
         Metal mass value
         """
         metal_mass_re = re.compile(
-            f"%BLOCK SPECIES_MASS\n.*\n.*{self.metal}\s+([0-9.]+)",
+            f"%BLOCK SPECIES_MASS\n.*\n.*{self.metal}" + r"\s+([0-9.]+)",
             re.MULTILINE)
         mass = float(metal_mass_re.search(self.text).group(1))
         return mass
@@ -47,8 +47,9 @@ class CellFile:
         """
         Metal potential filename
         """
-        pot_re = re.compile(f".*POT\n.*\n.*{self.metal}\s+([A-Za-z0-9._]+)",
-                            re.MULTILINE)
+        pot_re = re.compile(
+            f".*POT\n.*\n.*{self.metal}" + r"\s+([A-Za-z0-9._]+)",
+            re.MULTILINE)
         pot_file = pot_re.search(self.text).group(1)
         return pot_file
 
@@ -57,7 +58,7 @@ class CellFile:
         """
         Metal LCAO value
         """
-        lcao_re = re.compile(f".*LCAO.*\n.*\n.*{self.metal}\s+([0-9]+)",
+        lcao_re = re.compile(f".*LCAO.*\n.*\n.*{self.metal}" + r"\s+([0-9]+)",
                              re.MULTILINE)
         lcao_state = int(lcao_re.search(self.text).group(1))
         return lcao_state
@@ -85,7 +86,7 @@ def main(dir_name: str):
     if cell_files == []:
         print("Wrong input dir")
         return
-    cell_files = [item for item in cell_files if not "DOS" in item.stem]
+    cell_files = [item for item in cell_files if "DOS" not in item.stem]
     cell_files = sorted(
         cell_files,
         key=lambda x: pdtable.elements.symbol(  #type:ignore
