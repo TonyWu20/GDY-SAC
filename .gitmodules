@@ -1,0 +1,3 @@
+[submodule "mol2msi"]
+	path = mol2msi
+	url = https://github.com/TonyWu20/mol2msi.git

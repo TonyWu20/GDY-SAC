@@ -24,7 +24,7 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
 
 4. create_model.py: Modify the metal element in the template SAC_GDY_Sc.xsd to create the GDY SAC models with various metal elements.
 
-## Adsorbates
+## Adsorbates (C1 Pathway)
 
 ![C1_path](figures/C1_path.jpg)
 ![adsorbates](figures/adsorbate.jpg)
@@ -60,6 +60,26 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
 - [x] O
 - [x] OH
 - [x] H2O
+
+## Adsorbates C2 pathway
+
+![C2_path](Figures/C2_path.jpg)
+
+> ACS Catal. 2018, 8, 2, 1490–1499.
+
+- General
+  - [x] CO
+  - [x] CHO
+  - [ ] COCHO
+- [ ] Ethylene Path
+  - [ ] COCHOH (radical)
+  - [ ] OCCH2O
+  - [ ] HOCCH2O
+    - [ ] OH-(CCH2O)
+    - [ ] CH3COOH (Acetic Acid)
+  - [ ] HOCHCH2O
+  - [ ] HCCH2O
+  - [ ] 
 
 ## Done: CASTEP input files generation (2021-08-06)
 
