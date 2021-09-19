@@ -293,7 +293,7 @@ class MsiLattice:
         Directory to put input files
         """
         stem = self.filepath.stem
-        if not "opt" in self.filepath.parent.name:
+        if "opt" not in self.filepath.parent.name:
             castep_dir = self.filepath.parent / f"{stem}_opt"
             if not castep_dir.exists():
                 castep_dir.mkdir(parents=True)
