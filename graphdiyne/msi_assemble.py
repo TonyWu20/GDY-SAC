@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Tuple, Dict, List
 from collections import Counter
 import numpy as np
-import sympy as sp
 import periodictable as pdtable
 from graphdiyne.msi_lattice import MsiLattice
 
