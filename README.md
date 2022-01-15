@@ -63,7 +63,7 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
 
 ## Adsorbates C2 pathway
 
-![C2_path](Figures/C2_path.jpg)
+![C2_path](figures/C2_path.jpg)
 
 > ACS Catal. 2018, 8, 2, 1490–1499.
 
