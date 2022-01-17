@@ -22,7 +22,8 @@ class MsiLattice:
         """
         self.filepath = filepath
         self.metal = filepath.stem.split("_")[2]
-        with open("castep_input/element_table.yaml", 'r') as file:
+        with open("castep_input/element_table.yaml", 'r',
+                  encoding="utf-8") as file:
             self.table = y.full_load(file)
         self.metal_prop = dp.get(self.table, f'*/{self.metal}')
         self.spin = self.metal_prop['spin']
@@ -179,7 +180,7 @@ class MsiLattice:
         carbon_id = [41, 42, 54, 53, 40]
         names = ["c1", "c2", "c3", "c4", "c5"]
 
-        def carbon_xyz(cid: int):
+        def carbon_xyz(cid: int) -> np.ndarray:
             atom_re = self.find_atom_by_id(cid)
             xyz_str = atom_re.search(self.text).group(3)  #type: ignore
             xyz_array = np.array(list(xyz_str.split(" ")))
@@ -191,6 +192,14 @@ class MsiLattice:
             for key, cid in zip(names, carbon_id)
         }
         return carbon_coords
+
+    @property
+    def carbon_chain_vector(self) -> np.ndarray:
+        """
+        Get vector of the carbon chain
+        """
+        vec: np.ndarray = self.carbon_coords["c1"] - self.carbon_coords["c2"]
+        return vec
 
     @property
     def metal_xyz(self):

@@ -2,6 +2,42 @@
 
 Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modelling.
 
+---
+
+## New
+
+Rewriting to better perform adsorbate molecule placing in the GDY lattice.
+
+### Module: msiProcessor
+
+- DataStructs.py
+  - Data structure of atom, adsorbate molecule and the GDY lattice
+  - Atom is the basic unit for molecule and lattice
+- my_maths.py
+  - About coordinate manipulation
+    - Rotation Matrix
+    - Rotate around center
+- parser.py
+  - Load molecule file and lattice file
+- model_builder.py
+  - Perform actions of placing adsorbate in target positions.
+  - Cases:
+    - Single coordinating site (few)
+      - Move along on top of the carbon chain, and the metal site
+    - Double coordinating site (main tasks for C2 pathway)
+      - Two-by-two mounting along the carbon chain and ring
+        - 1,2,3,4, far_ring (next to 4), close_ring (next to 1)
+      - Two-by-two mounting between the metal and adjacent two carbons
+        - 1,2
+        - 2,3
+        - 3,4
+        - 4, far_ring
+        - close_ring, 1
+        - 1, metal
+        - 2, metal
+
+---
+
 ## Usage
 
 1. gen_ads_model.py
@@ -79,7 +115,7 @@ Python and perl scripts to assist tasks in GDY-SAC and CO2RR adsorption modellin
     - [ ] CH3COOH (Acetic Acid)
   - [ ] HOCHCH2O
   - [ ] HCCH2O
-  - [ ] 
+  - [ ]
 
 ## Done: CASTEP input files generation (2021-08-06)
 

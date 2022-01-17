@@ -74,6 +74,7 @@ class AdsMol:  # pylint:disable=too-many-instance-attributes
     element_list: List[str] = field(init=False, repr=False)
 
     def __post_init__(self):
+        # self.update_mol_coords(self.make_straight())
         self.update_mol_coords(self.make_upright())
         self.update_mol_coords(self.reset_origin())
         self.element_set = set(a.element for a in self.atom_table.values())
@@ -137,17 +138,61 @@ class AdsMol:  # pylint:disable=too-many-instance-attributes
         unit_mol_N = normal / np.linalg.norm(normal)
         dot_product = np.dot(unit_mol_N, n_xz)
         angle = np.arccos(dot_product)
-        rot_matrix = my_maths.rotation_matrix(-angle, 'x')
+        print(np.degrees(angle))
         mol_coords = self.get_coordinates()
-        new_coords = np.dot(mol_coords, rot_matrix)
+        new_coords = my_maths.rotate_around_center(mol_coords, angle - np.pi,
+                                                   'x')
+        return new_coords
+
+    def make_straight(self) -> np.ndarray:
+        """
+        Return coord that the stem is parallel to the x axis
+        """
+        stem_vec = self.get_stem_vector()
+        xz_stem = stem_vec - np.array([0, stem_vec[1], 0])
+        n_yz = np.array([1, 0, 0])
+        y_angle = my_maths.vector_angle(xz_stem, n_yz)
+        xy_stem = stem_vec - np.array([0, 0, stem_vec[2]])
+        z_angle = my_maths.vector_angle(xy_stem, n_yz)
+        mol_coords = self.get_coordinates()
+        new_coords = my_maths.rotate_around_center(mol_coords, y_angle - np.pi,
+                                                   'y')
+        new_coords = my_maths.rotate_around_center(new_coords, z_angle - np.pi,
+                                                   'z')
         return new_coords
 
     def export_msi(self):
         atom_blocks: List[str] = [
             atom.text_in_msi() for atom in self.atom_table.values()
         ]
-        heading = "# MSI CERIUS2 DataModel File Version 4 0"
+        heading = "# MSI CERIUS2 DataModel File Version 4 0\n(1 Model"
         ending = ")"
         text_lines: List[str] = [heading] + atom_blocks + [ending]
         for line in text_lines:
             print(line)
+
+
+@dataclass
+class Lattice:
+    """
+    Structure of a lattice file
+    """
+    name: str
+    metal: str
+    lattice_vec: np.ndarray
+    atom_table: Dict[int, Atom]
+    carbon_site_ids: Dict[str, int] = field(init=False, repr=False)
+    metal_site_id: int = 73
+
+    def __post_init__(self):
+        """
+        Post loading of attributes
+        """
+        self.carbon_site_ids = {
+            "chain_1": 41,
+            "chain_2": 42,
+            "chain_3": 54,
+            "chain_4": 53,
+            "far_ring": 52,
+            "close_ring": 40
+        }
